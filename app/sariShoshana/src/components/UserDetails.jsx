@@ -48,7 +48,6 @@ const UserDetails = () => {
                 <br />
                 <button type="submit"> register</button>
             </form>
-
         </>
     );
 }
