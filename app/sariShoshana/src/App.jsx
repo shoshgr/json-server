@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState,useContext,createContext } from 'react'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import { Navigate } from 'react-router-dom';
 import './App.css';
@@ -11,31 +11,35 @@ import Info from './components/Info'
 import Todos from './components/Todos'
 import Posts from './components/Posts'
 import Albums from './components/Albums'
-
+const curUser =createContext()
 function App() {
-
+  const [cur_user,setCurUser]=useState("");
+   const setUser=(data)=>{
+    setCurUser(data);
+   }
 
   return (
+    <curUser.Provider value={{ cur_user, setUser }}>
     <Router>
-      <Routes>
-        
-        <Route path="/" element={<Navigate to="/login" />} />
-        <Route path="/login" element={<Login />} />
+  <Routes>
+    <Route path="/" element={<Navigate to="/login" />} />
+    <Route path="/login" element={<Login />} />
 
-        <Route path="/register" element={<Register />} >
-          <Route path="/register/details" element={<UserDetails />} />
-        </Route>
+    <Route path="/register" element={<Register />}>
+    </Route>
+    <Route path="/register/details" element={<UserDetails />} />
 
-        <Route path="/home" element={<Home />} >
-          <Route path="/home/info" element={<Info />} />
-          <Route path="/home/todos" element={<Todos />} />
-          <Route path="/home/posts" element={<Posts />} />
-          <Route path="/home/albums" element={<Albums />} />
-        </Route>
-
-      </Routes>
-    </Router>
+    <Route path="/home" element={<Home />}>
+      <Route path="info" element={<Info />} />
+      <Route path="todos" element={<Todos />} />
+      <Route path="posts" element={<Posts />} />
+      <Route path="albums" element={<Albums />} />
+    </Route>
+  </Routes>
+</Router>
+</curUser.Provider>
+    
   )
 }
 
-export default App
+export { App,curUser}

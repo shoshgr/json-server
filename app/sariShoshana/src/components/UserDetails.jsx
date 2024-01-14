@@ -1,14 +1,58 @@
-import { useState } from 'react'
+import { useState,useContext,useRef } from 'react'
+import { curUser } from '../App';
 
 const UserDetails = () => {
-
     const setCurUser = (user) => {
         localStorage.setItem("cur_user", JSON.stringify(user));
+    }
+    const setUser=(event)=>{
+        debugger;
+        const apiUrl = 'http://localhost:3002'
+        let id="11";
+        // fetch(`${apiUrl}/config_id?type=id`
+        // , { method: 'GET' }).then(data => {data.json();
+        //   console.log(data) }).then(data=> id=data.id).then(fetch(`${apiUrl}/config_id`
+        //     , { method: 'PUT', body: JSON.stringify({"type":"id","id":id+1}),headers: {
+        //         'Content-Type': 'application/json',
+        //       }})).catch(error=>console.error(error));
+
+        
+        const user= {
+            "id": id,
+            "name": event.target.querySelector('#name').value,
+            "username":curUser.name,
+            "email":event.target.querySelector('#email').value ,
+            "address": {
+              "street": event.target.querySelector('#street').value,
+              "suite": event.target.querySelector('#suite').value,
+              "city":event.target.querySelector('#city').value,
+              "zipcode": event.target.querySelector('#zipcode').value,
+              "geo": {
+                "lat": event.target.querySelector('#lat').value,
+                "lng": event.target.querySelector('#lng').value
+              }
+            },
+            "phone": event.target.querySelector('#phone').value,
+            "website": curUser.password,
+            "company": {
+              "name": event.target.querySelector('#company_name').value,
+              "catchPhrase": event.target.querySelector('#catchPhrase').value,
+              "bs":event.target.querySelector('#bs').value
+            }
+          }
+          fetch(`${apiUrl}/users`, {
+            method: "POST",
+            body: user,
+            headers: {
+              "Content-type": "application/json; charset=UTF-8",
+            },
+          });
     }
 
     return (
         <>
-            <form action="">
+            <form onSubmit={setUser}  action="">
+           
                 <label htmlFor="name">name: </label>
                 <input type='text' id='name' />
                 <br />

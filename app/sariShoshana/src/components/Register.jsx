@@ -1,13 +1,15 @@
-import { useState } from 'react';
+import { useState,useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import { curUser } from '../App';
 
 const Register = () => {
 
     const apiUrl = 'http://localhost:3002/users';
     const navigate = useNavigate();
     const [message, setMessage] = useState("");
-
-    const register = (name, password) => {
+const { cur_user, setUser }=useContext(curUser);
+    const register = (name) => {
         fetch(`${apiUrl}?username=${name}`
             , { method: 'GET' }).then(data => data.json()).then(data => {
                 if (data.length > 0) {
@@ -15,7 +17,8 @@ const Register = () => {
                     navigate("/login");
                 }
                 else
-                    navigate("/register/details")
+                    {navigate("/register/details")
+                    }
             })
     }
 
@@ -31,7 +34,8 @@ const Register = () => {
         }
         else {
             setMessage("");
-            register(userName, password);
+            setUser({name:userName,password:password});
+            register(userName);
         }
     }
 
@@ -51,6 +55,7 @@ const Register = () => {
                 <button type="submit"> register</button>
             </form>
             <button onClick={() => { navigate("/login") }} > login</button>
+            
         </>
     );
 }
