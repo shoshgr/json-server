@@ -15,7 +15,7 @@ const Register = () => {
                     navigate("/login");
                 }
                 else
-                    navigate("/details")
+                    navigate("/register/details")
             })
     }
 
@@ -47,8 +47,8 @@ const Register = () => {
                 <label htmlFor="verify_password">verify password: </label>
                 <input type='text' id='verify_password' required />
                 <br />
-                <button type="submit"> register</button>
                 <h3>{message}</h3>
+                <button type="submit"> register</button>
             </form>
             <button onClick={() => { navigate("/login") }} > login</button>
         </>

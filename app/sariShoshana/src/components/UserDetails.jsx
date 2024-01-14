@@ -46,7 +46,7 @@ const UserDetails = () => {
                 <label htmlFor="bs"> bs: </label>
                 <input type='text' id='bs' />
                 <br />
-                <button type="submit"> register</button>
+                <button type="submit">register </button>
             </form>
         </>
     );
