@@ -20,7 +20,7 @@ function Login() {
             .then(data => data.json())
             .then(data => {
                 if (data.length > 0) {
-                    alert(`welcome ${userName}`);
+                    alert(`welcome ${userName}!`);
                     setCurUser(data[0]);
                     navigate("/home");
                 }
