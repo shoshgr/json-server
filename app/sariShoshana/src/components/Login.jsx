@@ -22,7 +22,7 @@ function Login() {
                 if (data.length > 0) {
                     alert(`welcome ${userName}!`);
                     setCurUser(data[0]);
-                    navigate("/home");
+                    navigate(`/home/users/${data[0].id}`);
                 }
                 else {
                     alert("error username or password ");

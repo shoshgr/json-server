@@ -1,8 +1,6 @@
-import { useState,useContext,createContext } from 'react'
+import { useState,createContext } from 'react'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import { Navigate } from 'react-router-dom';
-import './App.css';
-
 import Login from './components/Login'
 import Register from './components/Register'
 import UserDetails from './components/UserDetails'
@@ -17,6 +15,7 @@ function App() {
    const setUser=(data)=>{
     setCurUser(data);
    }
+   let user = JSON.parse( localStorage.getItem("cur_user"));
 
   return (
     <curUser.Provider value={{ cur_user, setUser }}>
@@ -29,13 +28,16 @@ function App() {
     </Route>
     <Route path="/register/details" element={<UserDetails />} />
 
-    <Route path="/home" element={<Home />}>
+    <Route path="/home/users/:id" element={<Home />}>
       <Route path="info" element={<Info />} />
-      <Route path="todos" element={<Todos />} />
+    
       <Route path="posts" element={<Posts />} />
       <Route path="albums" element={<Albums />} />
-    </Route>
+      </Route>
+      <Route path="/home/users/:id/todos" element={<Todos />} />
   </Routes>
+  
+    
 </Router>
 </curUser.Provider>
     
