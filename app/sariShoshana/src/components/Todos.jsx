@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { Navigate, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import AddTodo from './AddTodo';
+import Todo from './DeleteTodo';
 
 const Todos = () => {
-
     const navigate = useNavigate();
     const user = JSON.parse(localStorage.getItem("cur_user"));
     const apiUrl = 'http://localhost:3002/todos';
@@ -10,16 +11,11 @@ const Todos = () => {
     const [todos, setTodosArr] = useState(null);
     const [todosDiv, setTodosDiv] = useState(null);
     const [searchArr, setSearch] = useState([]);
-    const [showSearchForm, setShowSearchForm] = useState(0);
+    const [showSearchForm, setShowSearchForm] = useState({ status: 0, type: "" });
 
     const setTodosScreen = () => {
         setTodosDiv(todos && todos.map((t) => (
-            <div key={t.id}>
-                <h3>id: {t.id}</h3>
-                <h3>title: {t.title}</h3>
-                <h3>completed:</h3>
-                <input type="checkbox" readOnly checked={t.completed}></input>
-            </div>)))
+           <Todo todos={todos} setTodosArr={setTodosArr}  t={t}/>)))
     }
 
     function fetchArr() {
@@ -34,10 +30,27 @@ const Todos = () => {
 
     const search = (event) => {
         event.preventDefault();
-        let id_search = event.target.querySelector('#search').value;
-        todos.map(t => {
-            (t.id == id_search) ? setSearch(searchArr.push(t)) : null;
-        });
+        let input_value = event.target.querySelector('#search').value;
+        switch (showSearchForm.type) {
+            case "id":
+                todos.map(t => {
+                    (t.id == input_value) ? setSearch(searchArr.push(t)) : null;
+                });
+                break;
+            case "title":
+                todos.map(t => {
+                    (t.title == input_value) ? setSearch(searchArr.push(t)) : null;
+                });
+                break;
+            case "completed":
+                todos.map(t => {
+                    (t.completed == (input_value=="true")?true:false) ? setSearch(searchArr.push(t)) : null;
+                });
+                break;
+
+            default:
+                break;
+        }
         if (searchArr.length) {
             setTodosDiv(searchArr.map((t) => (
                 <div key={t.id}>
@@ -46,28 +59,29 @@ const Todos = () => {
                     <h3>completed:</h3>
                     <input type="checkbox" readOnly checked={t.completed}></input>
                 </div>)))
-            navigate(`?id=${id_search}`);
+            navigate(`?${showSearchForm.type}=${input_value}`);
         }
         else
-            alert(`todo with id: ${id_search} does not exist`)
+            alert(`todo with ${showSearchForm.type}: ${input_value} does not exist`);
+            setShowSearchForm({ status: 0, type: "" });
     }
 
     const handleSearchSelect = (value) => {
         switch (value) {
             case "id":
-                setShowSearchForm(1);
+                setShowSearchForm({ status: 1, type: "id" });
                 break;
             case "title":
-                setTodosArr(todos.sort((a, b) => (a.title < b.title) ? 1 : -1));
-                setTodosScreen();
-                console.log(todos);
+                setShowSearchForm({ status: 1, type: "title" });
                 break;
             case "completed (true/false)":
-                setTodosArr(todos.sort((a, b) => (b.completed - a.completed)));
-                setTodosScreen();
+                setShowSearchForm({ status: 1, type: "completed" });
                 break;
             default:
+                setTodosScreen();
+                navigate("");
         }
+        setSearch([]);
     };
 
     const handleSortSelect = (value) => {
@@ -101,15 +115,13 @@ const Todos = () => {
         <>
 
             <h3>Todos:</h3>
+            <AddTodo todos={todos}  setTodosArr={setTodosArr}/>
+            
+  
 
             <div>
                 {(!todosDiv && todos) ? todos.map((t) => (
-                    <div key={t.id}>
-                        <h3>id: {t.id}</h3>
-                        <h3>title: {t.title}</h3>
-                        <h3>completed:</h3>
-                        <input type="checkbox" readOnly checked={t.completed}></input>
-                    </div>)) : todosDiv}
+                    <Todo  todos={todos} setTodosArr={setTodosArr} t={t}/>)) : todosDiv}
             </div>
 
             {todos && (
@@ -118,7 +130,7 @@ const Todos = () => {
                 </select>
             )}
 
-            <form style={{ display: showSearchForm ? "inline" : "none" }} id="searchForm" onSubmit={search}>
+            <form style={{ display: showSearchForm.status ? "inline" : "none" }} id="searchForm" onSubmit={search}>
                 <input id="search" type="text" />
                 <button type="submit" >search</button>
             </form>
@@ -126,6 +138,7 @@ const Todos = () => {
             <select onChange={(e) => handleSearchSelect(e.target.value)}>
                 {searchOptions.map(option => <option key={option} value={option}>{option}</option>)}
             </select>
+            
         </>
     );
 };
