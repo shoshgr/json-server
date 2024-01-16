@@ -16,7 +16,7 @@ const logout=()=>{
             <h3>{user.name}</h3>
             <button onClick={()=>{navigate("info")}}>Info  | </button>
             <Link to={"info"}>Info  |  </Link>
-            <Link to={"/home/users/:id/todo:"}>Todos  |  </Link>
+            <Link to={"/home/users/:id/todos:"}>Todos  |  </Link>
             <Link to={"posts"}>Posts  |  </Link>
             <Link to={'albums'}>Albums  |  </Link>
             <Link onClick={logout} to={'/login'}>Logout</Link>

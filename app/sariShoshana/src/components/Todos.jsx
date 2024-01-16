@@ -1,12 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { Navigate, useNavigate } from 'react-router-dom';
 const Todos = () => {
-    const navigate=useNavigate();
+    const navigate = useNavigate();
     const user = JSON.parse(localStorage.getItem("cur_user"));
     const apiUrl = 'http://localhost:3002/todos';
     const [todos, setTodosArr] = useState(null);
     const [div, setDive] = useState();
-const [searchDiv,setSearch]=useState();
+    const [searchArr, setSearch] = useState([]);
+    const[show,setShow]=useState(0); 
+
+
     const todoDive = () => {
         setDive(todos && todos.map((t) => (
             <div key={t.id}>
@@ -27,14 +30,30 @@ const [searchDiv,setSearch]=useState();
     useEffect(() => {
         fetchArr();
     }, []);
-
-    const handleSortSelect = (value) => {
+    const search = (event) => {
+        let id_search = event.target.querySelector('#search').value;
+        //navigate(`?id=${id_search}`);
+        todos.map(t => {
+            (t.id == id_search) ? setSearch(searchArr.push(t)) : null;
+        });
+        if (searchArr.length) {
+            setDive(searchArr.map((t) => (
+                <div key={t.id}>
+                    <h3>id: {t.id}</h3>
+                    <h3>title: {t.title}</h3>
+                    <h3>completed:</h3>
+                    <input type="checkbox" readOnly checked={t.completed}></input>
+                </div>)))
+        }
+        else
+            alert(`totdo with id: ${id_search} does not exist`)
+    }
+    const handleSearchSelect = (value) => {
 
 
         switch (value) {
             case "id":
-                setTodosArr(todos.sort((a, b) => a.id - b.id));
-                todoDive();
+              setShow(1);  
                 break;
             case "title":
                 setTodosArr(todos.sort((a, b) => (a.title < b.title) ? 1 : -1));
@@ -43,8 +62,8 @@ const [searchDiv,setSearch]=useState();
 
                 break;
             case "completed":
-              
-                setTodosArr(todos.sort((a,b) => (b.completed-a.completed)));
+
+                setTodosArr(todos.sort((a, b) => (b.completed - a.completed)));
                 todoDive();
 
                 break;
@@ -54,20 +73,12 @@ const [searchDiv,setSearch]=useState();
 
 
     };
-    const search=(type)=>{
 
-    }
-    const handleSearchSelect = (value) => {
+    const handleSortSelect = (value) => {
 
         switch (value) {
             case "id":
-                setSearch(
-                <form onSubmit={(event)=>{navigate(`?id=${event.target.querySelector('#search').value}`);}}>
-                <input id="search" type="text" /> 
-                <button type="submit" >search</button>
-                </form>)
-                
-                
+                setTodosArr(todos.sort((a, b) => a.id - b.id));
                 todoDive();
                 break;
             case "a-z":
@@ -82,8 +93,8 @@ const [searchDiv,setSearch]=useState();
 
                 break;
             case "completed":
-              
-                setTodosArr(todos.sort((a,b) => (b.completed-a.completed)));
+
+                setTodosArr(todos.sort((a, b) => (b.completed - a.completed)));
                 todoDive();
 
                 break;
@@ -113,15 +124,20 @@ const [searchDiv,setSearch]=useState();
                     <option value="a-z">Title: a-z</option>
                     <option value="completed">Completed</option>
                 </select>
-                
+
             )}
-  <div>{searchDiv}</div>
-              <select onChange={(e) => handleSearchSelect(e.target.value)}>
-                    <option value="none">None</option>
-                    <option value="id">ID</option>
-                    <option value="title">Title:</option>
-                    <option value="completed">Completed</option>
-                </select>
+             <form style={{display:show?"inline":"none"}} id="searchForm" onSubmit={(event) => {
+                        search;
+                    }}>
+                        <input id="search" type="text" />
+                        <button type="submit" >search</button>
+                    </form>
+            <select onChange={(e) => handleSearchSelect(e.target.value)}>
+                <option value="none">None</option>
+                <option value="id">ID</option>
+                <option value="title">Title:</option>
+                <option value="completed">Completed</option>
+            </select>
         </>
     );
 };

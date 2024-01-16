@@ -34,7 +34,7 @@ function App() {
       <Route path="posts" element={<Posts />} />
       <Route path="albums" element={<Albums />} />
       </Route>
-      <Route path="/home/users/:id/todos" element={<Todos />} />
+      <Route path="/home/users/:id/todos:" element={<Todos />} />
   </Routes>
   
     
