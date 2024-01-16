@@ -1,11 +1,13 @@
 
 
 const Info = () => {
-    let user = JSON.parse( localStorage.getItem("cur_user"));
+
+    let user = JSON.parse(localStorage.getItem("cur_user"));
+
     return (
         <>
             <h2><strong>Info:</strong></h2>
-            <strong>name :</strong>  <h4>{user.name}</h4>
+            <h4><strong>name :</strong> {user.name}</h4>
             <h4><strong>username :</strong> {user.username}</h4>
             <h4><strong>email :</strong> {user.email}</h4>
             <h3><strong>address :</strong></h3>
@@ -21,10 +23,6 @@ const Info = () => {
             <h4><strong>name :</strong> {user.company.name}</h4>
             <h4><strong>catchPhrase :</strong> {user.company.catchPhrase}</h4>
             <h4><strong>bs :</strong> {user.company.bs}</h4>
-    
-      
-      
-
         </>
     );
 }

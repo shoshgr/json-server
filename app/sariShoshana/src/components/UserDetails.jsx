@@ -1,6 +1,6 @@
 import { useState, useContext } from 'react'
 import { curUser } from '../App';
-import {  useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const UserDetails = () => {
 
@@ -54,7 +54,7 @@ const UserDetails = () => {
         "Content-type": "application/json; charset=UTF-8",
       }
     })
-    
+
     setLocalUser(cur_user);
     alert(`welcome ${cur_user.name}!`);
     navigate("/home");

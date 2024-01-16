@@ -1,4 +1,4 @@
-import { useState,useContext } from 'react';
+import { useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import { curUser } from '../App';
@@ -8,7 +8,8 @@ const Register = () => {
     const apiUrl = 'http://localhost:3002/users';
     const navigate = useNavigate();
     const [message, setMessage] = useState("");
-const { cur_user, setUser }=useContext(curUser);
+    const { cur_user, setUser } = useContext(curUser);
+    
     const register = (name) => {
         fetch(`${apiUrl}?username=${name}`
             , { method: 'GET' }).then(data => data.json()).then(data => {
@@ -16,9 +17,9 @@ const { cur_user, setUser }=useContext(curUser);
                     alert("user already exist, please login");
                     navigate("/login");
                 }
-                else
-                    {navigate("/register/details")
-                    }
+                else {
+                    navigate("/register/details")
+                }
             })
     }
 
@@ -34,7 +35,7 @@ const { cur_user, setUser }=useContext(curUser);
         }
         else {
             setMessage("");
-            setUser({name:userName,password:password});
+            setUser({ name: userName, password: password });
             register(userName);
         }
     }
@@ -55,7 +56,7 @@ const { cur_user, setUser }=useContext(curUser);
                 <button type="submit"> register</button>
             </form>
             <button onClick={() => { navigate("/login") }} > login</button>
-            
+
         </>
     );
 }
