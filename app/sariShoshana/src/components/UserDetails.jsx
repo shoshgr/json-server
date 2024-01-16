@@ -18,7 +18,7 @@ const UserDetails = () => {
             .then((response) => response.json())
             .then((json) => {
                 console.log(json)
-                id = json.nextUserId
+                id = json[0].nextUserId
             });
 
 }
@@ -64,11 +64,13 @@ useEffect(() => {
         "Content-type": "application/json; charset=UTF-8",
       }
     })
-    id+=1;
+  
+    const next_id= { 
+    "nextUserId":   id+1 }
     fetch(`${apiUrl}/config_id/nextUserId`, {
             method: "PUT",
             body: JSON.stringify(
-               { "nextUserId": id }
+                next_id 
             ),
             headers: {
                 "Content-type": "application/json; charset=UTF-8",
