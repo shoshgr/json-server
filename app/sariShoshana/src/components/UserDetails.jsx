@@ -1,27 +1,37 @@
-import { useState, useContext } from 'react'
+import { useState, useContext,useEffect } from 'react'
 import { curUser } from '../App';
 import { useNavigate } from 'react-router-dom';
 
 const UserDetails = () => {
-
+    const apiUrl = 'http://localhost:3002'
+    let id ;
   const { cur_user, set_User } = useContext(curUser);
-
   const navigate = useNavigate()
 
   const setLocalUser = () => {
     localStorage.setItem("cur_user", JSON.stringify(cur_user));
   }
+  function fetchID() {
+    fetch(`${apiUrl}/config_id`, {
+            method: 'GET'
+        })
+            .then((response) => response.json())
+            .then((json) => {
+                console.log(json)
+                id = json.nextUserId
+            });
+
+}
+
+useEffect(() => {
+    fetchID();
+}, []);
+
 
   const setUser = (event) => {
-    const apiUrl = 'http://localhost:3002'
-    let id = "14";
+   
 
-    // fetch(`${apiUrl}/config_id?type=id`
-    // , { method: 'GET' }).then(data => {data.json();
-    //   console.log(data) }).then(data=> id=data.id).then(fetch(`${apiUrl}/config_id`
-    //     , { method: 'PUT', body: JSON.stringify({"type":"id","id":id+1}),headers: {
-    //         'Content-Type': 'application/json',
-    //       }})).catch(error=>console.error(error));
+  
 
     const user = {
       "id": id,
@@ -54,6 +64,16 @@ const UserDetails = () => {
         "Content-type": "application/json; charset=UTF-8",
       }
     })
+    id+=1;
+    fetch(`${apiUrl}/config_id/nextUserId`, {
+            method: "PUT",
+            body: JSON.stringify(
+               { "nextUserId": id }
+            ),
+            headers: {
+                "Content-type": "application/json; charset=UTF-8",
+            },
+        }).then((response) => response.json()).then((json) => console.log(json));
 
     setLocalUser(cur_user);
     alert(`welcome ${cur_user.name}!`);
