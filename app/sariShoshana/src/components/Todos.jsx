@@ -8,7 +8,7 @@ const Todos = () => {
     const apiUrl = 'http://localhost:3002/todos';
 
     const [todos, setTodosArr] = useState(null);
-    const [todosDiv, setTodosDiv] = useState();
+    const [todosDiv, setTodosDiv] = useState(null);
     const [searchArr, setSearch] = useState([]);
     const [showSearchForm, setShowSearchForm] = useState(0);
 
@@ -33,26 +33,23 @@ const Todos = () => {
     }, []);
 
     const search = (event) => {
+        event.preventDefault();
         let id_search = event.target.querySelector('#search').value;
-        navigate(`?id=${id_search}`);
         todos.map(t => {
             (t.id == id_search) ? setSearch(searchArr.push(t)) : null;
         });
-        console.log(searchArr)
         if (searchArr.length) {
-            let a = [];
-            searchArr.map(t => a.push(t))
-            setTodosDiv(a.map((t) => (
+            setTodosDiv(searchArr.map((t) => (
                 <div key={t.id}>
                     <h3>id: {t.id}</h3>
                     <h3>title: {t.title}</h3>
                     <h3>completed:</h3>
                     <input type="checkbox" readOnly checked={t.completed}></input>
                 </div>)))
-            console.log(todosDiv)
+            navigate(`?id=${id_search}`);
         }
         else
-            alert(`totdo with id: ${id_search} does not exist`)
+            alert(`todo with id: ${id_search} does not exist`)
     }
 
     const handleSearchSelect = (value) => {
@@ -102,6 +99,7 @@ const Todos = () => {
 
     return (
         <>
+
             <h3>Todos:</h3>
 
             <div>
