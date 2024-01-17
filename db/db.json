@@ -1,7 +1,7 @@
 {
   "config_id": [
     {
-      "nextUserId": 15,
+      "nextTodoId": 36,
       "id": "nextUserId"
     },
     {
@@ -13,8 +13,8 @@
       "nextAlbumId": 37
     },
     {
-      "id": "nextTodoId",
-      "nextTodoId": 29
+      "nextTodoId": 36,
+      "id": "nextTodoId"
     },
     {
       "id": "nextCommentId",
@@ -254,92 +254,6 @@
         "name": "Hoeger LLC",
         "catchPhrase": "Centralized empowering task-force",
         "bs": "target end-to-end models"
-      }
-    },
-    {
-      "id": "11",
-      "name": "",
-      "email": "grilak@gmail.com",
-      "address": {
-        "street": "",
-        "suite": "",
-        "city": "",
-        "zipcode": "",
-        "geo": {
-          "lat": "",
-          "lng": ""
-        }
-      },
-      "phone": "",
-      "company": {
-        "name": "",
-        "catchPhrase": "",
-        "bs": ""
-      }
-    },
-    {
-      "id": "12",
-      "name": "",
-      "email": "shoshgrilak@gmail.com",
-      "address": {
-        "street": "",
-        "suite": "",
-        "city": "",
-        "zipcode": "",
-        "geo": {
-          "lat": "",
-          "lng": ""
-        }
-      },
-      "phone": "",
-      "company": {
-        "name": "",
-        "catchPhrase": "",
-        "bs": ""
-      }
-    },
-    {
-      "id": "13",
-      "name": "",
-      "email": "grilak@gmail.com",
-      "address": {
-        "street": "",
-        "suite": "",
-        "city": "",
-        "zipcode": "",
-        "geo": {
-          "lat": "",
-          "lng": ""
-        }
-      },
-      "phone": "",
-      "company": {
-        "name": "",
-        "catchPhrase": "",
-        "bs": ""
-      }
-    },
-    {
-      "id": 14,
-      "name": "",
-      "username": "s",
-      "email": "",
-      "address": {
-        "street": "",
-        "suite": "",
-        "city": "",
-        "zipcode": "",
-        "geo": {
-          "lat": "",
-          "lng": ""
-        }
-      },
-      "phone": "",
-      "website": "1",
-      "company": {
-        "name": "",
-        "catchPhrase": "",
-        "bs": ""
       }
     }
   ],
@@ -1436,14 +1350,8 @@
     {
       "userId": 1,
       "id": "8",
-      "title": "quo adipisci enim quam ut ab",
+      "title": "jkhvgcfgx",
       "completed": false
-    },
-    {
-      "userId": 1,
-      "id": "9",
-      "title": "111",
-      "completed": true
     },
     {
       "userId": 1,

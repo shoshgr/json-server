@@ -1,38 +1,34 @@
-import { useState, useContext,useEffect } from 'react'
+import { useState, useContext, useEffect } from 'react'
 import { curUser } from '../App';
 import { useNavigate } from 'react-router-dom';
 
 const UserDetails = () => {
-    const apiUrl = 'http://localhost:3002'
-    let id ;
+
+  const apiUrl = 'http://localhost:3002'
+  let id;
   const { cur_user, set_User } = useContext(curUser);
   const navigate = useNavigate()
 
   const setLocalUser = () => {
     localStorage.setItem("cur_user", JSON.stringify(cur_user));
   }
+
   function fetchID() {
     fetch(`${apiUrl}/config_id`, {
-            method: 'GET'
-        })
-            .then((response) => response.json())
-            .then((json) => {
-                console.log(json)
-                id = json[0].nextUserId
-            });
+      method: 'GET'
+    })
+      .then((response) => response.json())
+      .then((json) => {
+        console.log(json)
+        id = json[0].nextUserId
+      });
+  }
 
-}
-
-useEffect(() => {
+  useEffect(() => {
     fetchID();
-}, []);
-
+  }, []);
 
   const setUser = (event) => {
-   
-
-  
-
     const user = {
       "id": id,
       "name": event.target.querySelector('#name').value,
@@ -64,22 +60,22 @@ useEffect(() => {
         "Content-type": "application/json; charset=UTF-8",
       }
     })
-  
-    const next_id= { 
-    "nextUserId":   id+1 }
+
+    const next_id = {
+      "nextUserId": id + 1
+    }
+
     fetch(`${apiUrl}/config_id/nextUserId`, {
-            method: "PUT",
-            body: JSON.stringify(
-                next_id 
-            ),
-            headers: {
-                "Content-type": "application/json; charset=UTF-8",
-            },
-        }).then((response) => response.json()).then((json) => console.log(json));
+      method: "PUT",
+      body: JSON.stringify(next_id),
+      headers: {
+        "Content-type": "application/json; charset=UTF-8",
+      },
+    }).then((response) => response.json()).then((json) => console.log(json));
 
     setLocalUser(cur_user);
     alert(`welcome ${cur_user.name}!`);
-    navigate("/home");
+    navigate(`/home/users/${id}`);
   }
 
   return (

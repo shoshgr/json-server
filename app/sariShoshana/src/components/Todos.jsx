@@ -15,7 +15,7 @@ const Todos = () => {
 
     const setTodosScreen = () => {
         setTodosDiv(todos && todos.map((t) => (
-           <Todo todos={todos} setTodosArr={setTodosArr}  todo={t}/>)))
+            <Todo todos={todos} setTodosArr={setTodosArr} todo={t} />)))
     }
 
     function fetchArr() {
@@ -31,6 +31,7 @@ const Todos = () => {
     const search = (event) => {
         event.preventDefault();
         let input_value = event.target.querySelector('#search').value;
+
         switch (showSearchForm.type) {
             case "id":
                 todos.map(t => {
@@ -44,26 +45,22 @@ const Todos = () => {
                 break;
             case "completed":
                 todos.map(t => {
-                    (t.completed == (input_value=="true")?true:false) ? setSearch(searchArr.push(t)) : null;
+                    (t.completed == (input_value == "true") ? true : false) ? setSearch(searchArr.push(t)) : null;
                 });
                 break;
-
             default:
                 break;
         }
+
         if (searchArr.length) {
             setTodosDiv(searchArr.map((t) => (
-                <div key={t.id}>
-                    <h3>id: {t.id}</h3>
-                    <h3>title: {t.title}</h3>
-                    <h3>completed:</h3>
-                    <input type="checkbox" readOnly checked={t.completed}></input>
-                </div>)))
+                <Todo todos={todos} setTodosArr={setTodosArr} todo={t} />)))
             navigate(`?${showSearchForm.type}=${input_value}`);
         }
         else
             alert(`todo with ${showSearchForm.type}: ${input_value} does not exist`);
-            setShowSearchForm({ status: 0, type: "" });
+        event.target.querySelector('#search').value = ""
+        setShowSearchForm({ status: 0, type: "" });
     }
 
     const handleSearchSelect = (value) => {
@@ -78,6 +75,7 @@ const Todos = () => {
                 setShowSearchForm({ status: 1, type: "completed" });
                 break;
             default:
+                setShowSearchForm({ status: 0, type: "none" });
                 setTodosScreen();
                 navigate("");
         }
@@ -114,31 +112,30 @@ const Todos = () => {
     return (
         <>
 
-            <h3>Todos:</h3>
-            <AddTodo todos={todos}  setTodosArr={setTodosArr}/>
-            
-  
+            <h2>Todos:</h2>
 
-            <div>
-                {(!todosDiv && todos) ? todos.map((t) => (
-                    <Todo  todos={todos} setTodosArr={setTodosArr} todo={t}/>)) : todosDiv}
-            </div>
-
-            {todos && (
-                <select onChange={(e) => handleSortSelect(e.target.value)}>
+            <AddTodo todos={todos} setTodosArr={setTodosArr} /><br />
+            {todos && (<>
+                <label htmlFor="sort_selection">order by: </label>
+                <select id='sort_selection' onChange={(e) => handleSortSelect(e.target.value)}>
                     {sortOptions.map(option => <option key={option} value={option}>{option}</option>)}
-                </select>
-            )}
+                </select><br />
+            </>)}
+
+            <label htmlFor="search_selection">search by: </label>
+            <select id='search_selection' onChange={(e) => handleSearchSelect(e.target.value)}>
+                {searchOptions.map(option => <option key={option} value={option}>{option}</option>)}
+            </select><br />
 
             <form style={{ display: showSearchForm.status ? "inline" : "none" }} id="searchForm" onSubmit={search}>
                 <input id="search" type="text" />
                 <button type="submit" >search</button>
             </form>
 
-            <select onChange={(e) => handleSearchSelect(e.target.value)}>
-                {searchOptions.map(option => <option key={option} value={option}>{option}</option>)}
-            </select>
-            
+            <div>
+                {(!todosDiv && todos) ? todos.map((t) => (
+                    <Todo key={t.id} todos={todos} setTodosArr={setTodosArr} todo={t} />)) : todosDiv}
+            </div>
         </>
     );
 };
