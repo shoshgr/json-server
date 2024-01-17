@@ -7,7 +7,7 @@ const Todo = (props) => {
     const url = "http://localhost:3002/todos";
 
     const delete_todo = () => {
-        event.preventDefault();
+        // event.preventDefault();
         fetch(`${url}/${cur_todo.id}`, {
             method: 'DELETE',
             headers: {
