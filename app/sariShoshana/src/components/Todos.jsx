@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import AddTodo from './AddTodo';
-import Todo from './DeleteTodo';
+import Todo from './Todo';
 
 const Todos = () => {
     const navigate = useNavigate();
@@ -15,7 +15,7 @@ const Todos = () => {
 
     const setTodosScreen = () => {
         setTodosDiv(todos && todos.map((t) => (
-           <Todo todos={todos} setTodosArr={setTodosArr}  t={t}/>)))
+           <Todo todos={todos} setTodosArr={setTodosArr}  todo={t}/>)))
     }
 
     function fetchArr() {
@@ -121,7 +121,7 @@ const Todos = () => {
 
             <div>
                 {(!todosDiv && todos) ? todos.map((t) => (
-                    <Todo  todos={todos} setTodosArr={setTodosArr} t={t}/>)) : todosDiv}
+                    <Todo  todos={todos} setTodosArr={setTodosArr} todo={t}/>)) : todosDiv}
             </div>
 
             {todos && (

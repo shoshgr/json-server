@@ -21,8 +21,6 @@ function App() {
     setCurUser(data);
   }
 
-  // let user = JSON.parse(localStorage.getItem("cur_user"));
-
   return (
     <curUser.Provider value={{ cur_user, setUser }}>
       <Router>
@@ -46,7 +44,6 @@ function App() {
         </Routes>
       </Router>
     </curUser.Provider>
-
   )
 }
 

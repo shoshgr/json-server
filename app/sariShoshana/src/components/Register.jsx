@@ -1,6 +1,5 @@
 import { useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Link } from 'react-router-dom';
 import { curUser } from '../App';
 
 const Register = () => {
@@ -9,10 +8,11 @@ const Register = () => {
     const navigate = useNavigate();
     const [message, setMessage] = useState("");
     const { cur_user, setUser } = useContext(curUser);
-    
+
     const register = (name) => {
-        fetch(`${apiUrl}?username=${name}`
-            , { method: 'GET' }).then(data => data.json()).then(data => {
+        fetch(`${apiUrl}?username=${name}`, { method: 'GET' })
+            .then(data => data.json())
+            .then(data => {
                 if (data.length > 0) {
                     alert("user already exist, please login");
                     navigate("/login");
