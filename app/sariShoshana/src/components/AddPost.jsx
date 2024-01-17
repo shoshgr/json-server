@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-const AddTodo = (props) => {
+const AddPost = (props) => {
 
  
     let arr = []
@@ -9,13 +9,13 @@ const AddTodo = (props) => {
     const apiUrl = 'http://localhost:3002';
     const [id,setId]=useState();
     function fetchID() {
-        fetch(`${apiUrl}/config_id?id=nextTodoId`, {
+        fetch(`${apiUrl}/config_id?id=nextPostId`, {
           method: 'GET'
         })
           .then((response) => response.json())
           .then((json) => {
             console.log(json)
-            setId(json[0].nextTodoId);
+            setId(json[0].nextPostId);
            
           });
       }
@@ -25,51 +25,50 @@ const AddTodo = (props) => {
       }, []);
     const add = (event) => {
         event.preventDefault();
-        let todo = {
+        let post = {
             userId: user.id,
             id: id,
             title: event.target.querySelector('#title').value,
-            completed: event.target.querySelector('#completed').checked
+            body: event.target.querySelector('#body').value
         }
-        fetch('http://localhost:3002/todos', {
+        fetch(`${apiUrl}/posts`, {
             method: "POST",
-            body: JSON.stringify(todo),
+            body: JSON.stringify(post),
             headers: {
                 "Content-type": "application/json; charset=UTF-8",
             }
         });
         setId(id+1);
         const next_id = {
-            "nextTodoId": id
+            "nextPostId": id 
         }
-        fetch(`${apiUrl}/config_id/nextTodoId`, {
+        fetch(`${apiUrl}/config_id/nextPostId`, {
             method: "PUT",
             body: JSON.stringify(next_id),
             headers: {
                 "Content-type": "application/json; charset=UTF-8",
             },
-        }).catch(error=>console.error(error));
-
+        }).catch(error=>console.error(error))
         setShowForm("none");
-        props.todos.map(t => arr.push(t));
-        arr.push(todo);
-        props.setTodosArr(arr);
-        props.setTodosArr(arr);
+        props.posts.map(p => arr.push(p));
+        arr.push(post);
+        props.setPosts(arr);
+        props.setPosts(arr);
         event.target.querySelector('#title').value = "";
-        event.target.querySelector('#completed').checked = false;
+        event.target.querySelector('#body').value = "";
     }
 
     return (<>
-        <button onClick={() => { showForm == "none" ? setShowForm("inline") : setShowForm("none") }}>add a todo</button>
+        <button onClick={() => { showForm == "none" ? setShowForm("inline") : setShowForm("none") }}>add a post</button>
         <form onSubmit={() => add(event)} style={{ display: showForm }}>
             <label htmlFor="title">title:</label>
             <input type="text" id="title" />
-            <label htmlFor="completed">completed:</label>
-            <input type="checkbox" id="completed" />
-            <button type="submit" >add todo</button>
+            <label htmlFor="body">body:</label>
+            <input type="text" id="body" />
+            <button type="submit" >add post</button>
         </form>
     </>
     );
 }
 
-export default AddTodo;
+export default AddPost;

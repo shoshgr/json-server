@@ -7,7 +7,6 @@ const Todos = () => {
     const navigate = useNavigate();
     const user = JSON.parse(localStorage.getItem("cur_user"));
     const apiUrl = 'http://localhost:3002/todos';
-
     const [todos, setTodosArr] = useState(null);
     const [todosDiv, setTodosDiv] = useState(null);
     const [searchArr, setSearch] = useState([]);
