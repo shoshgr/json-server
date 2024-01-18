@@ -29,7 +29,7 @@ const AddComment = (props) => {
             postId: props.postId,
             id: id,
             name: event.target.querySelector('#name').value,
-            email: event.target.querySelector('#email').value,
+            email: user.email,
             body: event.target.querySelector('#body').value
         }
         fetch(`${apiUrl}/comments`, {
@@ -57,7 +57,6 @@ const AddComment = (props) => {
         props.setComments(arr);
         event.target.querySelector('#name').value = "";
         event.target.querySelector('#body').value = "";
-        event.target.querySelector('#email').value = "";
     }
 
     return (<>
@@ -65,8 +64,6 @@ const AddComment = (props) => {
         <form onSubmit={() => add(event)} style={{ display: showForm }}>
             <label htmlFor="name">name: </label>
             <input type="text" id="name" /><br />
-            <label htmlFor="email">email: </label>
-            <input type="text" id="email" /><br />
             <label htmlFor="completed"> body:</label>
             <input type="text" id="body" /><br />
             <button style={{ height: "25px", padding: "0" }} type="submit" >add comment</button>

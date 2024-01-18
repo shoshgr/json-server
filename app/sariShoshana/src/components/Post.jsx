@@ -1,12 +1,19 @@
-import React, { useState } from "react";
+import React, { useState} from "react";
+import Comments from './Comments';
+import { Navigate, useNavigate } from 'react-router-dom'; 
+
 
 const Post = (props) => {
+
+ 
 const[bodyDisplay,setDisplay]=useState("none");
-    const cur_post ={id:props.post.id,userId:props.post.userId,title:props.post.title,body:props.post.body};
+    const cur_post =props.post;
     const [form, setUpdateForm] = useState();
+    const[commentsDiv,setCommentsDiv]=useState();
     const url = "http://localhost:3002";
-const [Comments,setComments]=useState();
-//const [comments,setComents]=useState([]);
+
+
+const navigate=useNavigate();
     const delete_post = () => {
         // event.preventDefault();
         fetch(`${url}/posts/${cur_post.id}`, {
@@ -51,18 +58,8 @@ const [Comments,setComments]=useState();
         });
     }
 const show_comments=()=>{
-    
-    fetch(`${apiUrl}/comments?postId=${cur_post.id}`, {
-        method: 'GET'
-      })
-        .then((response) => response.json())
-        .then((data) => {
-          console.log(data)
-          setComments(data[0])
-        });
-        // setComents(comments.push({comments:curComments,postId:cur_post.id}));
-
-
+setCommentsDiv(<Comments postId={cur_post.id}   />);
+    navigate(`${cur_post.id}/comments`);
 }
     return (
     <div style={{backgroundColor:bodyDisplay=="none"?"white":"lightpink",padding:"15px"}}>
@@ -71,7 +68,7 @@ const show_comments=()=>{
             <h3 >title: {cur_post.title}</h3>
             <h3 style={{display:bodyDisplay}}>body: {cur_post.body}</h3>
             <br />
-          
+
         </div >
         <button  onClick={() => delete_post()}>delete</button>
         <button  onClick={() => show_comments()}>comments</button>
@@ -85,7 +82,8 @@ const show_comments=()=>{
                 </form>)
             }}>update</button>
             <div>{form}</div>
-            <div>{comments}</div>
+            <div >{commentsDiv}</div>
+           
             </div>
     )
 }

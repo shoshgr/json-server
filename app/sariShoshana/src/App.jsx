@@ -9,6 +9,7 @@ import Info from './components/Info'
 import Todos from './components/Todos'
 import Posts from './components/Posts'
 import Albums from './components/Albums'
+import Comments from './components/Comments'
 import './App.css'
 
 const curUser = createContext()
@@ -40,6 +41,7 @@ function App() {
           </Route>
           <Route path="/home/users/:id/posts" element={<Posts />} />
           <Route path="/home/users/:id/todos" element={<Todos />} />
+          <Route path="/home/users/:id/posts/:postId/comments" element={<Comments />} />
 
         </Routes>
       </Router>

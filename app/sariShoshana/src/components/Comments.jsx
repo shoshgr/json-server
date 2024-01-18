@@ -4,33 +4,39 @@ import { useNavigate } from 'react-router-dom';
 import AddPost from './AddPost';
 import Comment from './Comment';
 import AddComment from './AddComment';
-
+import { useParams } from 'react-router-dom';
 const Comments = (props) => {
+    const { postId } = useParams();
+
     const navigate = useNavigate();
     const user = JSON.parse(localStorage.getItem("cur_user"));
-    const [posts, setPosts] = useState(null);
-    
-
-    const setPostsScreen = () => {
-        setPostsDiv(posts && posts.map((c) => (
-            <Comment key={c.id} comments={props.comments} setComments={props.setComments} comment={c} />)))
+  const[comments,setComments]=useState();
+  const url = "http://localhost:3002";
+  const fetchArr=()=>{
+    fetch(`${url}/comments?postId=${postId}`, {
+        method: 'GET'
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          console.log(data)
+          setComments(data)
+        });
     }
-
-    
-
-    
-
+        useEffect(() => {
+            fetchArr();
+        }, []);
 
 
 
     return (
         <>
-             <AddComment postId={props.id}  comments={props.comments} setComments={props.setComments} /><br /> 
+   <h2>post id {postId} :comments</h2>
+             <AddComment postId={postId}  comments={comments} setComments={setComments} /><br /> 
          
 
             <div>
-                { posts.map((c) => (
-                    <Comment email={user.email} key={c.id} comments={props.comments} setComments={props.setComments} comment={c} />)) : commentsDiv}
+                {comments&& comments.map((c) => (
+                    <Comment email={user.email} key={c.id} comments={comments} setComments={setComments} comment={c} />))}
             </div>
         </>
     );

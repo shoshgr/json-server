@@ -79,6 +79,7 @@ const Posts = () => {
         <>
 
             <h2>posts:</h2>
+            <h2>click on any post to see his body</h2>
 
              <AddPost posts={posts} setPosts={setPosts} /><br /> 
         

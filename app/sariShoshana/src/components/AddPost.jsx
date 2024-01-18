@@ -37,8 +37,8 @@ const AddPost = (props) => {
             headers: {
                 "Content-type": "application/json; charset=UTF-8",
             }
-        });
-        setId(id+1);
+        }).then(console.log("post")).catch(error=>console.error(error)).then(()=>updateID());
+      const updateID=()=> { setId(id+1);
         const next_id = {
             "nextPostId": id 
         }
@@ -48,11 +48,10 @@ const AddPost = (props) => {
             headers: {
                 "Content-type": "application/json; charset=UTF-8",
             },
-        }).catch(error=>console.error(error))
+        }).catch(error=>console.error(error))}
         setShowForm("none");
         props.posts.map(p => arr.push(p));
         arr.push(post);
-        props.setPosts(arr);
         props.setPosts(arr);
         event.target.querySelector('#title').value = "";
         event.target.querySelector('#body').value = "";
