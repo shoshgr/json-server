@@ -9,8 +9,8 @@
       "id": "nextPostId"
     },
     {
-      "id": "nextAlbumId",
-      "nextAlbumId": 37
+      "nextAlbumId": 38,
+      "id": "nextAlbumId"
     },
     {
       "nextTodoId": 41,
@@ -1046,11 +1046,6 @@
   "albums": [
     {
       "userId": 1,
-      "id": "1",
-      "title": "quidem molestiae enim"
-    },
-    {
-      "userId": 1,
       "id": "2",
       "title": "sunt qui excepturi placeat culpa"
     },
@@ -1223,6 +1218,16 @@
       "userId": 4,
       "id": "36",
       "title": "nihil cupiditate voluptate neque"
+    },
+    {
+      "id": 37,
+      "userId": "1",
+      "title": "ugu"
+    },
+    {
+      "id": 38,
+      "userId": "1",
+      "title": "shosh"
     }
   ],
   "photos": [
@@ -1332,21 +1337,21 @@
       "thumbnailUrl": "https://via.placeholder.com/150/f9cee5"
     },
     {
-      "albumId": 1,
+      "albumId": 2,
       "id": "16",
       "title": "iusto sunt nobis quasi veritatis quas expedita voluptatum deserunt",
       "url": "https://via.placeholder.com/600/fdf73e",
       "thumbnailUrl": "https://via.placeholder.com/150/fdf73e"
     },
     {
-      "albumId": 1,
+      "albumId": 2,
       "id": "17",
       "title": "natus doloribus necessitatibus ipsa",
       "url": "https://via.placeholder.com/600/9c184f",
       "thumbnailUrl": "https://via.placeholder.com/150/9c184f"
     },
     {
-      "albumId": 1,
+      "albumId": 2,
       "id": "18",
       "title": "laboriosam odit nam necessitatibus et illum dolores reiciendis",
       "url": "https://via.placeholder.com/600/1fe46f",

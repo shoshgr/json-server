@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-const AddComment = (props) => {
+const AddPhoto = (props) => {
 
 
     let arr = []
@@ -9,13 +9,13 @@ const AddComment = (props) => {
     const apiUrl = 'http://localhost:3002';
     const [id, setId] = useState();
     function fetchID() {
-        fetch(`${apiUrl}/config_id?id=nextCommentId`, {
+        fetch(`${apiUrl}/config_id?id=nextPhotoId`, {
             method: 'GET'
         })
             .then((response) => response.json())
             .then((json) => {
                 console.log(json)
-                setId(json[0].nextCommentId);
+                setId(json[0].nextPhotoId);
 
             });
     }
@@ -25,25 +25,25 @@ const AddComment = (props) => {
     }, []);
     const add = (event) => {
         event.preventDefault();
-        let comment = {
-            postId: props.postId,
+        let photo = {
+            postId: props.albumId,
             id: id,
-            name: event.target.querySelector('#name').value,
-            email: user.email,
-            body: event.target.querySelector('#body').value
+            title: event.target.querySelector('#title').value,
+            url: user.event.target.querySelector('#url').value,
+            thumbnailUrl: event.target.querySelector('#thumbnailUrl').value
         }
-        fetch(`${apiUrl}/comments`, {
+        fetch(`${apiUrl}/photos`, {
             method: "POST",
-            body: JSON.stringify(comment),
+            body: JSON.stringify(photo),
             headers: {
                 "Content-type": "application/json; charset=UTF-8",
             }
         });
         setId(id + 1);
         const next_id = {
-            "nextCommentId": id
+            "nextPhotoId": id
         }
-        fetch(`${apiUrl}/config_id/nextCommentId`, {
+        fetch(`${apiUrl}/config_id/nextPhotoId`, {
             method: "PUT",
             body: JSON.stringify(next_id),
             headers: {
@@ -51,25 +51,31 @@ const AddComment = (props) => {
             },
         }).catch(error => console.error(error))
         setShowForm("none");
-        props.comments.map(c => arr.push(c));
-        arr.push(comment);
-        props.setComments(arr);
-        props.setComments(arr);
+        props.photos.map(p => arr.push(p));
+        arr.push(photos);
+        props.setPhotos(arr);
+        props.setPhotos(arr);
         event.target.querySelector('#name').value = "";
         event.target.querySelector('#body').value = "";
     }
 
     return (<>
-        <button onClick={() => { showForm == "none" ? setShowForm("inline") : setShowForm("none") }}>add a comment</button>
+        <button onClick={() => { showForm == "none" ? setShowForm("inline") : setShowForm("none") }}>add a photo</button>
         <form onSubmit={() => add(event)} style={{ display: showForm }}>
             <label htmlFor="name">name: </label>
             <input type="text" id="name" /><br />
             <label htmlFor="body"> body:</label>
             <input type="text" id="body" /><br />
-            <button style={{ height: "25px", padding: "0" }} type="submit" >add comment</button>
+            <label htmlFor="title"> title:</label>
+            <input type="text" id="title" /><br />
+            <label htmlFor="url"> url:</label>
+            <input type="text" id="url" /><br />
+            <label htmlFor="thumbnailUrl"> thumbnailUrl:</label>
+            <input type="text" id="thumbnailUrl" /><br />
+            <button style={{ height: "25px", padding: "0" }} type="submit" >add photo</button>
         </form>
     </>
     );
 }
 
-export default AddComment;
+export default AddPhoto;

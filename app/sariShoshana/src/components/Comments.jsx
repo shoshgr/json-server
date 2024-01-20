@@ -8,7 +8,7 @@ import { useParams } from 'react-router-dom';
 const Comments = (props) => {
     const { postId } = useParams();
 
-    const navigate = useNavigate();
+    
     const user = JSON.parse(localStorage.getItem("cur_user"));
   const[comments,setComments]=useState();
   const url = "http://localhost:3002";
