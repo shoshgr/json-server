@@ -26,10 +26,10 @@ const AddPhoto = (props) => {
     const add = (event) => {
         event.preventDefault();
         let photo = {
-            postId: props.albumId,
-            id: id,
+            albumId: props.albumId,
+            id: `${id}`,
             title: event.target.querySelector('#title').value,
-            url: user.event.target.querySelector('#url').value,
+            url: event.target.querySelector('#url').value,
             thumbnailUrl: event.target.querySelector('#thumbnailUrl').value
         }
         fetch(`${apiUrl}/photos`, {
@@ -55,17 +55,14 @@ const AddPhoto = (props) => {
         arr.push(photos);
         props.setPhotos(arr);
         props.setPhotos(arr);
-        event.target.querySelector('#name').value = "";
-        event.target.querySelector('#body').value = "";
+        event.target.querySelector('#title').value = "";
+        event.target.querySelector('#url').value = "";
+        event.target.querySelector('#thumbnailUrl').value="";
     }
 
     return (<>
         <button onClick={() => { showForm == "none" ? setShowForm("inline") : setShowForm("none") }}>add a photo</button>
         <form onSubmit={() => add(event)} style={{ display: showForm }}>
-            <label htmlFor="name">name: </label>
-            <input type="text" id="name" /><br />
-            <label htmlFor="body"> body:</label>
-            <input type="text" id="body" /><br />
             <label htmlFor="title"> title:</label>
             <input type="text" id="title" /><br />
             <label htmlFor="url"> url:</label>

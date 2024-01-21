@@ -17,7 +17,10 @@ const Photo=(props)=>{
                 throw new Error(`Request failed with status: ${response.status}`);
             }
             const updatedArr = props.photos.filter(p => p.id != cur_photo.id);
+            props.setcurrentPhoto(props.photos[props.click-1]);
+            props.setClick(props.click-1);
             props.setPhotos(updatedArr);
+            
         }).catch(error => {
             console.error(error);
         });
@@ -45,6 +48,8 @@ const Photo=(props)=>{
             let updatedArr = [];
             props.photos.map(p => p.id != cur_photo.id ? updatedArr.push(p) : updatedArr.push(photo));
             props.setPhotos(updatedArr);
+            props.setcurrentPhoto(photo);
+         
         }).then(setUpdateForm(null)).catch(error => {
             console.error(error);
         });
@@ -53,10 +58,7 @@ const Photo=(props)=>{
     const update_photo=()=>{
         
         (form ? setUpdateForm(null) : setUpdateForm(<form onSubmit={() => update(event)}>
-           <label htmlFor="name">name: </label>
-            <input type="text" id="name" /><br />
-            <label htmlFor="body"> body:</label>
-            <input type="text" id="body" /><br />
+        
             <label htmlFor="title"> title:</label>
             <input type="text" id="title" /><br />
             <label htmlFor="url"> url:</label>
@@ -70,10 +72,12 @@ const Photo=(props)=>{
     return (
     <div >
         <div>
-            <h3>id: {cur_photo.id}</h3>
-        
-            <h3 >title: {cur_photo.title}</h3>
-            <h3 >url: {cur_photo.url}</h3>
+            <img  src={`${cur_photo.thumbnailUrl}`}   />
+          <h3>id: {cur_photo.id}</h3>
+         
+            {/* <h3 >title: {cur_photo.title}</h3>
+            <h3 >url: {cur_photo.url}</h3> */} 
+            
             <br/>
           
         </div>

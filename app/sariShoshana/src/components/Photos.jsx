@@ -7,6 +7,8 @@ const Phothos = (props) => {
     const [photos, setPhotos] = useState();
     const [click, setClick] = useState(0);
     const [currentPhoto, setcurrentPhoto] = useState();
+    const [nextBtn, setNextBtn] = useState("inline");
+    const [prevBtn, setPrevBtn] = useState("none");
     const url = "http://localhost:3002";
 
     const fetchArr = (offset, limit) => {
@@ -16,16 +18,18 @@ const Phothos = (props) => {
             .then((response) => response.json())
             .then((data) => {
                 console.log(data);
-                if (!photos)
+                if (!photos) {
                     setPhotos(data);
-                else
-{                  
-    let arr =[]
-    photos.map(p=>arr.push(p))  
-    data.map(p => arr.push(p))
-    setPhotos(arr);
+                    setcurrentPhoto(data[click]);
+                    setClick(click + 1);
 
-}                console.log(photos)
+                }
+                else {
+                    let arr = []
+                    photos.map(p => arr.push(p))
+                    data.map(p => arr.push(p))
+                    setPhotos(arr);
+                } console.log(photos);
             });
     };
 
@@ -36,16 +40,32 @@ const Phothos = (props) => {
 
 
     const next = async () => {
-        setClick(click + 1);
-        console.log(photos)
-        await setcurrentPhoto(photos[click]);
-        console.log(currentPhoto);
-        if (click % 10 == 8)
-            fetchArr(click + 2, click + 12);
+        if (photos[photos.length - 2].id == currentPhoto.id)
+           { setNextBtn("none");
+            setcurrentPhoto(photos[photos.length-1]);
+            }
+        else {
+            setClick(click + 1);
+            console.log(photos)
+            await setcurrentPhoto(photos[click]);
+            console.log(currentPhoto);
+            if (currentPhoto.id==photos[photos.length-3].id)
+                fetchArr(click + 2, click + 12);
+        }
+        setPrevBtn("inline");
     }
     const prev = () => {
-        setClick(click - 1);
-        setcurrentPhoto(photos[click]);
+
+        if (photos[1].id == currentPhoto.id) {
+            setPrevBtn("none");
+            setcurrentPhoto(photos[0]);
+            setClick(0);
+        }
+        else {
+            setcurrentPhoto(photos[click - 1]);
+            setClick(click - 1);
+        }
+        setNextBtn("inline");
     }
 
 
@@ -56,9 +76,9 @@ const Phothos = (props) => {
 
 
             <div>
-                <button onClick={() => prev()}>prev</button>
-                {currentPhoto && <Photo key={currentPhoto.id} photos={photos} setPhotos={setPhotos} photo={currentPhoto} />}
-                <button onClick={() => next()}>next</button>
+                <button style={{ display: prevBtn }} onClick={() => prev()}>prev</button>
+                {currentPhoto && <Photo setClick={setClick} setcurrentPhoto={setcurrentPhoto} click={click} key={currentPhoto.id} photos={photos} setPhotos={setPhotos} photo={currentPhoto} />}
+                <button style={{ display: nextBtn }} onClick={() => next()}>next</button>
             </div>
         </>
     );
