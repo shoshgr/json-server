@@ -54,7 +54,6 @@ const AddTodo = (props) => {
         props.todos.map(t => arr.push(t));
         arr.push(todo);
         props.setTodosArr(arr);
-        props.setTodosArr(arr);
         event.target.querySelector('#title').value = "";
         event.target.querySelector('#completed').checked = false;
     }

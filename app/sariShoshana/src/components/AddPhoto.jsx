@@ -54,7 +54,6 @@ const AddPhoto = (props) => {
         props.photos.map(p => arr.push(p));
         arr.push(photos);
         props.setPhotos(arr);
-        props.setPhotos(arr);
         event.target.querySelector('#title').value = "";
         event.target.querySelector('#url').value = "";
         event.target.querySelector('#thumbnailUrl').value="";

@@ -27,7 +27,7 @@ const AddPost = (props) => {
         event.preventDefault();
         let post = {
             userId: user.id,
-            id: id,
+            id: `${id}`,
             title: event.target.querySelector('#title').value,
             body: event.target.querySelector('#body').value
         }

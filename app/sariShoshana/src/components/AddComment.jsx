@@ -27,7 +27,7 @@ const AddComment = (props) => {
         event.preventDefault();
         let comment = {
             postId: props.postId,
-            id: id,
+            id: `${id}`,
             name: event.target.querySelector('#name').value,
             email: user.email,
             body: event.target.querySelector('#body').value
@@ -53,7 +53,6 @@ const AddComment = (props) => {
         setShowForm("none");
         props.comments.map(c => arr.push(c));
         arr.push(comment);
-        props.setComments(arr);
         props.setComments(arr);
         event.target.querySelector('#name').value = "";
         event.target.querySelector('#body').value = "";

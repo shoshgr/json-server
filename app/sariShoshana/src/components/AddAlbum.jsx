@@ -53,7 +53,6 @@ const AddAlbum = (props) => {
         props.albums.map(a => arr.push(a));
         arr.push(album);
         props.setAlbumsArr(arr);
-        props.setAlbumsArr(arr);
         event.target.querySelector('#title').value = "";
       
     }

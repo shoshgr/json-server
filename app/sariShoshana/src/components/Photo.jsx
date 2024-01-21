@@ -31,9 +31,9 @@ const Photo=(props)=>{
         let photo = {
             albumId: cur_photo.albumId,
             id: cur_photo.id,
-            title: event.target.querySelector('#title').value == "" ? cur_photo.name : event.target.querySelector('#title').value,
-            url:event.target.querySelector('#url').value == "" ? cur_photo.name : event.target.querySelector('#url').value,
-            thumbnailUrl: event.target.querySelector('#thumbnailUrl').value == "" ? cur_photo.body : event.target.querySelector('#thumbnailUrl').value
+            title: event.target.querySelector('#title').value == "" ? cur_photo.title : event.target.querySelector('#title').value,
+            url:event.target.querySelector('#url').value == "" ? cur_photo.url : event.target.querySelector('#url').value,
+            thumbnailUrl: event.target.querySelector('#thumbnailUrl').value == "" ? cur_photo.thumbnailUrl : event.target.querySelector('#thumbnailUrl').value
         }
         fetch(`${url}/photos/${cur_photo.id}`, {
             method: "PUT",
