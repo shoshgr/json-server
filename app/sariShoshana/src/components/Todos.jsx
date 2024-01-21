@@ -6,7 +6,7 @@ import Todo from './Todo';
 const Todos = () => {
     const navigate = useNavigate();
     const user = JSON.parse(localStorage.getItem("cur_user"));
-    const apiUrl = 'http://localhost:3002/todos';
+    const url = 'http://localhost:3002/todos';
     const [todos, setTodosArr] = useState(null);
     const [todosDiv, setTodosDiv] = useState(null);
     const [searchArr, setSearch] = useState([]);
@@ -18,7 +18,7 @@ const Todos = () => {
     }
 
     function fetchArr() {
-        fetch(`${apiUrl}?userId=${user.id}`)
+        fetch(`${url}?userId=${user.id}`)
             .then(response => response.json())
             .then(data => setTodosArr(data))
     }

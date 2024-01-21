@@ -37,10 +37,10 @@ function App() {
 
           <Route path="/home/users/:id" element={<Home />}>
             <Route path="info" element={<Info />} />
+            <Route path='albums' element={<Albums/>}></Route>
             {/* <Route path="posts" element={<Posts />} /> */}
-          
           </Route>
-          <Route path="/home/users/:id/albums" element={<Albums />} />
+          {/* <Route path="/home/users/:id/albums" element={<Albums />} /> */}
           <Route path="/home/users/:id/posts" element={<Posts />} />
           <Route path="/home/users/:id/todos" element={<Todos />} />
           <Route path="/home/users/:id/posts/:postId/comments" element={<Comments />} />

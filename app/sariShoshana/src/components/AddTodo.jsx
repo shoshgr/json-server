@@ -5,11 +5,11 @@ const AddTodo = (props) => {
     let arr = []
     const [showForm, setShowForm] = useState("none");
     const user = JSON.parse(localStorage.getItem("cur_user"));
-    const apiUrl = 'http://localhost:3002';
+    const url = 'http://localhost:3002';
     const [id, setId] = useState();
 
     function fetchID() {
-        fetch(`${apiUrl}/config_id?id=nextTodoId`, {
+        fetch(`${url}/config_id?id=nextTodoId`, {
             method: 'GET'
         })
             .then((response) => response.json())
@@ -47,7 +47,7 @@ const AddTodo = (props) => {
             "nextTodoId": id
         }
 
-        fetch(`${apiUrl}/config_id/nextTodoId`, {
+        fetch(`${url}/config_id/nextTodoId`, {
             method: "PUT",
             body: JSON.stringify(next_id),
             headers: {

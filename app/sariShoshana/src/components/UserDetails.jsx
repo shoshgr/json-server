@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 
 const UserDetails = () => {
 
-  const apiUrl = 'http://localhost:3002'
+  const url = 'http://localhost:3002'
   let id;
   const { cur_user, set_User } = useContext(curUser);
   const navigate = useNavigate()
@@ -14,7 +14,7 @@ const UserDetails = () => {
   }
 
   function fetchID() {
-    fetch(`${apiUrl}/config_id`, {
+    fetch(`${url}/config_id`, {
       method: 'GET'
     })
       .then((response) => response.json())
@@ -53,7 +53,7 @@ const UserDetails = () => {
       }
     }
 
-    fetch(`${apiUrl}/users`, {
+    fetch(`${url}/users`, {
       method: "POST",
       body: JSON.stringify(user),
       headers: {
@@ -65,7 +65,7 @@ const UserDetails = () => {
       "nextUserId": id + 1
     }
 
-    fetch(`${apiUrl}/config_id/nextUserId`, {
+    fetch(`${url}/config_id/nextUserId`, {
       method: "PUT",
       body: JSON.stringify(next_id),
       headers: {

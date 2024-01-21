@@ -2,7 +2,9 @@ import React, { useState, useEffect } from 'react';
 import Photo from './Photo';
 import AddPhoto from './AddPhoto';
 import { useParams } from 'react-router-dom';
+
 const Phothos = (props) => {
+
     const { albumId } = useParams();
     const [photos, setPhotos] = useState();
     const [click, setClick] = useState(0);
@@ -37,8 +39,6 @@ const Phothos = (props) => {
         fetchArr(0, 10);
     }, []);
 
-
-
     const next = async () => {
         if (photos[photos.length - 2].id == currentPhoto.id)
            { setNextBtn("none");
@@ -54,8 +54,8 @@ const Phothos = (props) => {
         }
         setPrevBtn("inline");
     }
-    const prev = () => {
 
+    const prev = () => {
         if (photos[1].id == currentPhoto.id) {
             setPrevBtn("none");
             setcurrentPhoto(photos[0]);
@@ -73,8 +73,6 @@ const Phothos = (props) => {
         <>
             <h2>album id {albumId} :photos</h2>
             <AddPhoto albumId={albumId} photos={photos} setPhotos={setPhotos} /><br />
-
-
             <div>
                 <button style={{ display: prevBtn }} onClick={() => prev()}>prev</button>
                 {currentPhoto && <Photo setClick={setClick} setcurrentPhoto={setcurrentPhoto} click={click} key={currentPhoto.id} photos={photos} setPhotos={setPhotos} photo={currentPhoto} />}
@@ -83,7 +81,5 @@ const Phothos = (props) => {
         </>
     );
 }
-
-
 
 export default Phothos;

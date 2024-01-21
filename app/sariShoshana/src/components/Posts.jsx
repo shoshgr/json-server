@@ -6,7 +6,7 @@ import Post from './Post';
 const Posts = () => {
     const navigate = useNavigate();
     const user = JSON.parse(localStorage.getItem("cur_user"));
-    const apiUrl = 'http://localhost:3002/posts';
+    const url = 'http://localhost:3002/posts';
     const [posts, setPosts] = useState(null);
     const [postsDiv, setPostsDiv] = useState(null);
     const [searchArr, setSearch] = useState([]);
@@ -18,7 +18,7 @@ const Posts = () => {
     }
 
     function fetchArr() {
-        fetch(`${apiUrl}?userId=${user.id}`)
+        fetch(`${url}?userId=${user.id}`)
             .then(response => response.json())
             .then(data => setPosts(data))
     }

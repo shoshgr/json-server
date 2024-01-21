@@ -12,11 +12,11 @@ function Login() {
 
     const verify_user = (event) => {
         event.preventDefault();
-        const apiUrl = 'http://localhost:3002/users';
+        const url = 'http://localhost:3002/users';
         const userName = event.target.querySelector('#name').value;
         const password = event.target.querySelector('#password').value;
 
-        fetch(`${apiUrl}?username=${userName}&website=${password}`, { method: 'GET' })
+        fetch(`${url}?username=${userName}&website=${password}`, { method: 'GET' })
             .then(data => data.json())
             .then(data => {
                 if (data.length > 0) {

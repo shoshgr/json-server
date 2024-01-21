@@ -4,13 +4,13 @@ import { curUser } from '../App';
 
 const Register = () => {
 
-    const apiUrl = 'http://localhost:3002/users';
+    const url = 'http://localhost:3002/users';
     const navigate = useNavigate();
     const [message, setMessage] = useState("");
     const { cur_user, setUser } = useContext(curUser);
 
     const register = (name) => {
-        fetch(`${apiUrl}?username=${name}`, { method: 'GET' })
+        fetch(`${url}?username=${name}`, { method: 'GET' })
             .then(data => data.json())
             .then(data => {
                 if (data.length > 0) {

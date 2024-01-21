@@ -5,11 +5,11 @@ const AddPost = (props) => {
     let arr = []
     const [showForm, setShowForm] = useState("none");
     const user = JSON.parse(localStorage.getItem("cur_user"));
-    const apiUrl = 'http://localhost:3002';
+    const url = 'http://localhost:3002';
     const [id, setId] = useState();
 
     function fetchID() {
-        fetch(`${apiUrl}/config_id?id=nextPostId`, {
+        fetch(`${url}/config_id?id=nextPostId`, {
             method: 'GET'
         })
             .then((response) => response.json())
@@ -33,7 +33,7 @@ const AddPost = (props) => {
             body: event.target.querySelector('#body').value
         }
 
-        fetch(`${apiUrl}/posts`, {
+        fetch(`${url}/posts`, {
             method: "POST",
             body: JSON.stringify(post),
             headers: {
@@ -50,7 +50,7 @@ const AddPost = (props) => {
                 "nextPostId": id
             }
 
-            fetch(`${apiUrl}/config_id/nextPostId`, {
+            fetch(`${url}/config_id/nextPostId`, {
                 method: "PUT",
                 body: JSON.stringify(next_id),
                 headers: {

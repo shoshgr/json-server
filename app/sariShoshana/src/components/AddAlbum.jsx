@@ -5,11 +5,11 @@ const AddAlbum = (props) => {
     let arr = []
     const [showForm, setShowForm] = useState("none");
     const user = JSON.parse(localStorage.getItem("cur_user"));
-    const apiUrl = 'http://localhost:3002';
+    const url = 'http://localhost:3002';
     const [id, setId] = useState();
 
     function fetchID() {
-        fetch(`${apiUrl}/config_id?id=nextAlbumId`, {
+        fetch(`${url}/config_id?id=nextAlbumId`, {
             method: 'GET'
         })
             .then((response) => response.json())
@@ -45,7 +45,7 @@ const AddAlbum = (props) => {
             "nextAlbumId": id
         }
 
-        fetch(`${apiUrl}/config_id/nextAlbumId`, {
+        fetch(`${url}/config_id/nextAlbumId`, {
             method: "PUT",
             body: JSON.stringify(next_id),
             headers: {
