@@ -3,8 +3,8 @@ import { useNavigate } from 'react-router-dom';
 import AddAlbum from './AddAlbum';
 import Album from './Album';
 
-
 const Albums = () => {
+
     const navigate = useNavigate();
     const user = JSON.parse(localStorage.getItem("cur_user"));
     const apiUrl = 'http://localhost:3002/albums';
@@ -88,7 +88,6 @@ const Albums = () => {
 
              <AddAlbum albums={albums} setAlbumsArr={setAlbums} /><br /> 
         
-
             <label htmlFor="search_selection">search by: </label>
             <select id='search_selection' onChange={(e) => handleSearchSelect(e.target.value)}>
                 {searchOptions.map(option => <option key={option} value={option}>{option}</option>)}
