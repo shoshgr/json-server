@@ -4,6 +4,7 @@ import AddPost from './AddPost';
 import Post from './Post';
 
 const Posts = () => {
+    
     const navigate = useNavigate();
     const user = JSON.parse(localStorage.getItem("cur_user"));
     const url = 'http://localhost:3002/posts';

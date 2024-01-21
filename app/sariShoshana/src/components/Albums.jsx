@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom'; 
+import { useNavigate } from 'react-router-dom';
 import AddAlbum from './AddAlbum';
 import Album from './Album';
 
@@ -10,8 +10,9 @@ const Albums = () => {
     const url = 'http://localhost:3002/albums';
     const [albums, setAlbums] = useState([]);
     const [albumsDiv, setAlbumsDiv] = useState(null);
-    const [searchArr, setSearch] = useState([]);
+    const [searchArr, setSearchArr] = useState([]);
     const [showSearchForm, setShowSearchForm] = useState({ status: 0, type: "" });
+    const searchOptions = ["none", "id", "title"]
 
     const setAlbumsScreen = () => {
         setAlbumsDiv(albums && albums.map((a) => (
@@ -34,17 +35,14 @@ const Albums = () => {
 
         switch (showSearchForm.type) {
             case "id":
-
                 albums.map(a => {
-
-                    if(input_value==a.id ){
-                     setSearch(searchArr.push(a));
-                    } 
+                    if (input_value == a.id)
+                        setSearchArr(searchArr.push(a));
                 });
                 break;
             case "title":
                 albums.map(a => {
-                    (a.title == input_value) ? setSearch(searchArr.push(a)) : null;
+                    (a.title == input_value) ? setSearchArr(searchArr.push(a)) : null;
                 });
                 break;
             default:
@@ -75,10 +73,8 @@ const Albums = () => {
                 setAlbumsScreen();
                 navigate("");
         }
-        setSearch([]);
+        setSearchArr([]);
     };
-
-    const searchOptions = ["none", "id", "title"]
 
     return (
         <>
@@ -86,8 +82,8 @@ const Albums = () => {
             <h2>albums:</h2>
             <h2>click on any album to see it's photos</h2>
 
-             <AddAlbum albums={albums} setAlbumsArr={setAlbums} /><br /> 
-        
+            <AddAlbum albums={albums} setAlbumsArr={setAlbums} /><br />
+
             <label htmlFor="search_selection">search by: </label>
             <select id='search_selection' onChange={(e) => handleSearchSelect(e.target.value)}>
                 {searchOptions.map(option => <option key={option} value={option}>{option}</option>)}

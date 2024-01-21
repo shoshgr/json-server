@@ -1,4 +1,4 @@
-import { useState, useContext, useEffect } from 'react'
+import React, { useState, useContext, useEffect } from 'react'
 import { curUser } from '../App';
 import { useNavigate } from 'react-router-dom';
 
@@ -71,7 +71,8 @@ const UserDetails = () => {
       headers: {
         "Content-type": "application/json; charset=UTF-8",
       },
-    }).then((response) => response.json()).then((json) => console.log(json));
+    })
+      .then((response) => response.json()).then((json) => console.log(json));
 
     setLocalUser(cur_user);
     alert(`welcome ${cur_user.name}!`);

@@ -56,7 +56,6 @@ const Register = () => {
                 <button type="submit"> register</button>
             </form>
             <button onClick={() => { navigate("/login") }} > login</button>
-
         </>
     );
 }

@@ -13,15 +13,17 @@ const Comment = (props) => {
             headers: {
                 'Content-Type': 'application/json',
             }
-        }).then(response => {
-            if (!response.ok) {
-                throw new Error(`Request failed with status: ${response.status}`);
-            }
-            const updatedArr = props.comments.filter(p => p.id != cur_comment.id);
-            props.setComments(updatedArr);
-        }).catch(error => {
-            console.error(error);
-        });
+        })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`Request failed with status: ${response.status}`);
+                }
+                const updatedArr = props.comments.filter(p => p.id != cur_comment.id);
+                props.setComments(updatedArr);
+            })
+            .catch(error => {
+                console.error(error);
+            });
     }
 
     const update = (event) => {
@@ -72,15 +74,17 @@ const Comment = (props) => {
         <div >
             <div>
                 <h3>id: {cur_comment.id}</h3>
-
                 <h3 >name: {cur_comment.name}</h3>
                 <h3 >body: {cur_comment.body}</h3>
                 <br />
-
             </div>
-            <button onClick={() => { user.email == cur_comment.email ? delete_comment() : alert("can not delete not your comment") }}>delete</button>
+
+            <button onClick={() => {
+                user.email == cur_comment.email ? delete_comment() : alert("can not delete not your comment")
+            }} >delete</button>
 
             <button onClick={() => { update_comment() }}>update</button>
+            
             <div>{form}</div>
         </div>
     );

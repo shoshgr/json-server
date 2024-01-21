@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 
 const AddPost = (props) => {
 
-    let arr = []
+    let tempArr = []
     const [showForm, setShowForm] = useState("none");
     const user = JSON.parse(localStorage.getItem("cur_user"));
     const url = 'http://localhost:3002';
@@ -60,9 +60,9 @@ const AddPost = (props) => {
         }
 
         setShowForm("none");
-        props.posts.map(p => arr.push(p));
-        arr.push(post);
-        props.setPosts(arr);
+        props.posts.map(p => tempArr.push(p));
+        tempArr.push(post);
+        props.setPosts(tempArr);
         event.target.querySelector('#title').value = "";
         event.target.querySelector('#body').value = "";
     }

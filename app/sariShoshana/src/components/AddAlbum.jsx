@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 
 const AddAlbum = (props) => {
 
-    let arr = []
+    let tempArr = []
     const [showForm, setShowForm] = useState("none");
     const user = JSON.parse(localStorage.getItem("cur_user"));
     const url = 'http://localhost:3002';
@@ -54,9 +54,9 @@ const AddAlbum = (props) => {
         }).catch(error => console.error(error));
 
         setShowForm("none");
-        props.albums.map(a => arr.push(a));
-        arr.push(album);
-        props.setAlbumsArr(arr);
+        props.albums.map(a => tempArr.push(a));
+        tempArr.push(album);
+        props.setAlbumsArr(tempArr);
         event.target.querySelector('#title').value = "";
     }
 

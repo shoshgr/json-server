@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 
 const AddComment = (props) => {
 
-    let arr = []
+    let tempArr = []
     const [showForm, setShowForm] = useState("none");
     const user = JSON.parse(localStorage.getItem("cur_user"));
     const url = 'http://localhost:3002';
@@ -56,9 +56,9 @@ const AddComment = (props) => {
         }).catch(error => console.error(error))
 
         setShowForm("none");
-        props.comments.map(c => arr.push(c));
-        arr.push(comment);
-        props.setComments(arr);
+        props.comments.map(c => tempArr.push(c));
+        tempArr.push(comment);
+        props.setComments(tempArr);
         event.target.querySelector('#name').value = "";
         event.target.querySelector('#body').value = "";
     }

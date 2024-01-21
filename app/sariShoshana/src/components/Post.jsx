@@ -39,6 +39,7 @@ const Post = (props) => {
             title: event.target.querySelector('#title').value == "" ? cur_post.title : event.target.querySelector('#title').value,
             body: event.target.querySelector('#body').value == "" ? cur_post.title : event.target.querySelector('#body').value
         }
+
         fetch(`${url}/posts/${cur_post.id}`, {
             method: "PUT",
             body: JSON.stringify(post),

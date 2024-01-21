@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 
 const AddTodo = (props) => {
 
-    let arr = []
+    let tempArr = []
     const [showForm, setShowForm] = useState("none");
     const user = JSON.parse(localStorage.getItem("cur_user"));
     const url = 'http://localhost:3002';
@@ -56,9 +56,9 @@ const AddTodo = (props) => {
         }).catch(error => console.error(error));
 
         setShowForm("none");
-        props.todos.map(t => arr.push(t));
-        arr.push(todo);
-        props.setTodosArr(arr);
+        props.todos.map(t => tempArr.push(t));
+        tempArr.push(todo);
+        props.setTodosArr(tempArr);
         event.target.querySelector('#title').value = "";
         event.target.querySelector('#completed').checked = false;
     }

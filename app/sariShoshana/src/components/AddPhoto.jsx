@@ -2,9 +2,8 @@ import React, { useState, useEffect } from "react";
 
 const AddPhoto = (props) => {
 
-    let arr = []
+    let tempArr = []
     const [showForm, setShowForm] = useState("none");
-    const user = JSON.parse(localStorage.getItem("cur_user"));
     const url = 'http://localhost:3002';
     const [id, setId] = useState();
 
@@ -57,9 +56,9 @@ const AddPhoto = (props) => {
         }).catch(error => console.error(error))
 
         setShowForm("none");
-        props.photos.map(p => arr.push(p));
-        arr.push(photos);
-        props.setPhotos(arr);
+        props.photos.map(p => tempArr.push(p));
+        tempArr.push(photos);
+        props.setPhotos(tempArr);
         event.target.querySelector('#title').value = "";
         event.target.querySelector('#url').value = "";
         event.target.querySelector('#thumbnailUrl').value = "";

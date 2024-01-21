@@ -15,15 +15,17 @@ const Album = (props) => {
             headers: {
                 'Content-Type': 'application/json',
             }
-        }).then(response => {
-            if (!response.ok) {
-                throw new Error(`Request failed with status: ${response.status}`);
-            }
-            const updatedArr = props.albums.filter(a => a.id != cur_album.id);
-            props.setAlbums(updatedArr);
-        }).catch(error => {
-            console.error(error);
-        });
+        })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`Request failed with status: ${response.status}`);
+                }
+                const updatedArr = props.albums.filter(a => a.id != cur_album.id);
+                props.setAlbums(updatedArr);
+            })
+            .catch(error => {
+                console.error(error);
+            });
     }
 
     const update = (event) => {
