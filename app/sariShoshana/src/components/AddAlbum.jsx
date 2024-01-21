@@ -27,7 +27,7 @@ const AddAlbum = (props) => {
         event.preventDefault();
         let album = {
             userId: user.id,
-            id: id,
+            id: `${id}`,
             title: event.target.querySelector('#title').value,
         }
         fetch('http://localhost:3002/albums', {

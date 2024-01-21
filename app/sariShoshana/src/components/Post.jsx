@@ -1,19 +1,19 @@
-import React, { useState} from "react";
+import React, { useState } from "react";
 import Comments from './Comments';
-import { Navigate, useNavigate } from 'react-router-dom'; 
+import { Navigate, useNavigate } from 'react-router-dom';
 
 
 const Post = (props) => {
 
- 
-const[bodyDisplay,setDisplay]=useState("none");
-    const cur_post =props.post;
+
+    const [bodyDisplay, setDisplay] = useState("none");
+    const cur_post = props.post;
     const [form, setUpdateForm] = useState();
-    const[commentsDiv,setCommentsDiv]=useState();
+    const [commentsDiv, setCommentsDiv] = useState();
     const url = "http://localhost:3002";
 
 
-const navigate=useNavigate();
+    const navigate = useNavigate();
     const delete_post = () => {
         // event.preventDefault();
         fetch(`${url}/posts/${cur_post.id}`, {
@@ -57,34 +57,34 @@ const navigate=useNavigate();
             console.error(error);
         });
     }
-const show_comments=()=>{
+    const show_comments = () => {
 
-    navigate(`${cur_post.id}/comments`);
-}
+        navigate(`${cur_post.id}/comments`);
+    }
     return (
-    <div style={{backgroundColor:bodyDisplay=="none"?"white":"lightpink",padding:"15px"}}>
-        <div onClick={()=>{setDisplay(bodyDisplay=="none"?"inline":"none")}} key={cur_post.id} >
-            <h3>id: {cur_post.id}</h3>
-            <h3 >title: {cur_post.title}</h3>
-            <h3 style={{display:bodyDisplay}}>body: {cur_post.body}</h3>
-            <br />
+        <div style={{ backgroundColor: bodyDisplay == "none" ? "white" : "lightpink", padding: "15px" }}>
+            <div onClick={() => { setDisplay(bodyDisplay == "none" ? "inline" : "none") }} key={cur_post.id} >
+                <h3>id: {cur_post.id}</h3>
+                <h3 >title: {cur_post.title}</h3>
+                <h3 style={{ display: bodyDisplay }}>body: {cur_post.body}</h3>
+                <br />
 
-        </div >
-        <button  onClick={() => delete_post()}>delete</button>
-        <button  onClick={() => show_comments()}>comments</button>
-            <button  onClick={() => {
+            </div >
+            <button onClick={() => delete_post()}>delete</button>
+            <button onClick={() => show_comments()}>comments</button>
+            <button onClick={() => {
                 form ? setUpdateForm(null) : setUpdateForm(<form onSubmit={() => update(event)}>
                     <label htmlFor="title">title: </label>
-                    <input  type="text" id="title" /><br />
+                    <input type="text" id="title" /><br />
                     <label htmlFor="body">body </label>
                     <input type="text" id="body" /><br />
-                    <button style={{height:"25px",padding:"0"}} type="submit" >update</button>
+                    <button style={{ height: "25px", padding: "0" }} type="submit" >update</button>
                 </form>)
             }}>update</button>
             <div>{form}</div>
-         
-           
-            </div>
+
+
+        </div>
     )
 }
 

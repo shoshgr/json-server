@@ -8,8 +8,8 @@ const Phothos = (props) => {
     const [click, setClick] = useState(0);
     const [currentPhoto, setcurrentPhoto] = useState();
     const url = "http://localhost:3002";
-  
-    const fetchArr  =   (offset, limit) => {
+
+    const fetchArr = (offset, limit) => {
         fetch(`${url}/photos?albumId=${albumId}&_start=${offset}&_limit=${limit}`, {
             method: 'GET'
         })
@@ -19,8 +19,13 @@ const Phothos = (props) => {
                 if (!photos)
                     setPhotos(data);
                 else
-                    setPhotos(data.map(p=>photos.push(p)));
-                console.log(photos)
+{                  
+    let arr =[]
+    photos.map(p=>arr.push(p))  
+    data.map(p => arr.push(p))
+    setPhotos(arr);
+
+}                console.log(photos)
             });
     };
 
@@ -30,10 +35,10 @@ const Phothos = (props) => {
 
 
 
-    const next =async () => {
+    const next = async () => {
         setClick(click + 1);
         console.log(photos)
-      await  setcurrentPhoto(photos[click]);
+        await setcurrentPhoto(photos[click]);
         console.log(currentPhoto);
         if (click % 10 == 8)
             fetchArr(click + 2, click + 12);

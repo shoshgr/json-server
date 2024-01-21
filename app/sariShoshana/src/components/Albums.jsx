@@ -84,7 +84,7 @@ const Albums = () => {
         <>
 
             <h2>albums:</h2>
-            <h2>click on any albums to see his songs</h2>
+            <h2>click on any album to see it's photos</h2>
 
              <AddAlbum albums={albums} setAlbumsArr={setAlbums} /><br /> 
         
