@@ -33,7 +33,7 @@ function Login() {
     }
 
     return (
-        <>
+        <div className='getInForm' id="login">
             <form onSubmit={verify_user}>
                 <label htmlFor="name">name: </label>
                 <input type='text' id='name' required />
@@ -44,7 +44,7 @@ function Login() {
                 <button type="submit">login</button>
             </form>
             <button onClick={() => { navigate("/register") }}>register</button>
-        </>
+        </div>
     );
 
 }

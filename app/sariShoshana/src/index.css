@@ -129,6 +129,79 @@ margin: 2px;
 top: 110%;
 }
 
+/* Style for alert messages */
+.alert {
+  margin-top: 15px;
+  padding: 10px;
+  background-color: #f44336;
+  color: white;
+  border-radius: 3px;
+  display: none;
+}
+
+
+.getInForm {
+  max-width: 400px;
+  margin: 100px auto;
+  width: 600px;
+  padding: 100px;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.getInForm >form {
+  display: flex;
+  flex-direction: column;
+}
+
+.getInForm >label {
+  text-align: left;
+  margin-bottom: 8px;
+  color: #333;
+}
+
+.getInForm >input {
+  padding: 20px;
+  margin-bottom: 15px;
+  box-sizing: border-box;
+  border: 1px solid #ced4da;
+  border-radius: 4px;
+}
+
+.getInForm >button {
+  background-color: #007bff;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.getInForm >button.login {
+  background-color: #28a745;
+}
+
+.getInForm >button:hover {
+  background-color: #0056b3;
+}
+
+.getInForm >h3 {
+  margin-top: 10px;
+  color: #dc3545;
+}
+
+.getInForm>.button-container {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 15px;
+}
+
+.getInForm >button {
+  width: 48%;
+}
+
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;

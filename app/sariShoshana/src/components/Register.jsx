@@ -41,7 +41,7 @@ const Register = () => {
     }
 
     return (
-        <>
+        <div className='getInForm' id="register">
             <form onSubmit={verify_password}>
                 <label htmlFor="name">name: </label>
                 <input type='text' id='name' required />
@@ -56,7 +56,7 @@ const Register = () => {
                 <button type="submit"> register</button>
             </form>
             <button onClick={() => { navigate("/login") }} > login</button>
-        </>
+        </div>
     );
 }
 
