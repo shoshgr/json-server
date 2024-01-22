@@ -71,21 +71,22 @@ const Comment = (props) => {
     }
 
     return (
-        <div >
+        <div className="item">
             <div>
-                <h3>id: {cur_comment.id}</h3>
-                <h3 >name: {cur_comment.name}</h3>
-                <h3 >body: {cur_comment.body}</h3>
+                <h3>id: <small>{cur_comment.id}</small></h3>
+                <h3 >name: <small>{cur_comment.name}</small> </h3>
+                <h3 >body: <small>{cur_comment.body}</small> </h3>
                 <br />
             </div>
-
+            <div className="btnDiv">
             <button onClick={() => {
                 user.email == cur_comment.email ? delete_comment() : alert("can not delete not your comment")
             }} >delete</button>
 
             <button onClick={() => { update_comment() }}>update</button>
-            
             <div>{form}</div>
+            </div>
+       
         </div>
     );
 };

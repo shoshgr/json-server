@@ -55,28 +55,30 @@ const Todo = (props) => {
     }
 
     return (<>
-        <div key={cur_todo.id} style={{ display: "inline-grid", width: "350px", height: "400px", border: "1px solid black", margin: "15px" }}>
-            <h3>id: {cur_todo.id}</h3>
-            <h3>title: {cur_todo.title}</h3>
+        <div className="item" key={cur_todo.id} >
+            <h3>id: <small>{cur_todo.id}</small></h3>
+            <h3>title: <small>{cur_todo.title}</small></h3>
 
             <label>completed: </label>
             <input type="checkbox" readOnly checked={cur_todo.completed}></input>
 
-            <br />
-            <button style={{ width: "50%", marginRight: "25%", marginLeft: "25%", marginBottom: "10px" }}
+        
+            <div className="btnDiv">
+            <button 
                 onClick={() => delete_todo()}>delete</button>
 
-            <button style={{ width: "50%", marginRight: "25%", marginLeft: "25%" }} onClick={() => {
+            <button onClick={() => {
                 form ? setUpdateForm(null) : setUpdateForm(<form onSubmit={() => update(event)}>
                     <label htmlFor="title">title: </label>
                     <input type="text" id="title" /><br />
                     <label htmlFor="completed">change status: </label>
                     <input type="checkbox" id="completed" /><br />
-                    <button style={{ height: "25px", padding: "0" }} type="submit" >update</button>
+                    <button  type="submit" >update</button>
                 </form>)
             }}>update</button>
             
             <div>{form}</div>
+            </div>
         </div >
     </>)
 }

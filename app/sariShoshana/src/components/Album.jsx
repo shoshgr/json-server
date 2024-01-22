@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 
 const Album = (props) => {
 
-    const [bodyDisplay, setDisplay] = useState("none");
+
     const cur_album = props.album;
     const [form, setUpdateForm] = useState();
     const url = "http://localhost:3002";
@@ -57,29 +57,32 @@ const Album = (props) => {
             });
     }
 
-    const showPhotos = () => {
-        navigate(`${cur_album.id}/photos`);
-    }
+    // const showPhotos = () => {
+    //     navigate(`${cur_album.id}/photos`);
+    // }
 
     return (
-        <div style={{ backgroundColor: bodyDisplay == "none" ? "white" : "lightpink", padding: "15px" }}>
+        <div className="item">
 
-            <div onClick={() => { setDisplay(bodyDisplay == "none" ? "inline" : "none") }} key={cur_album.id} >
-                <h3>id: {cur_album.id}</h3>
-                <h3 >title: {cur_album.title}</h3>
-            </div >
 
-            <button onClick={() => delete_album()}>delete</button>
-            <button onClick={() => showPhotos()}>show photos</button>
-            <button onClick={() => {
-                form ? setUpdateForm(null) : setUpdateForm(<form onSubmit={() => update(event)}>
-                    <label htmlFor="title">title: </label>
-                    <input type="text" id="title" /><br />
-                    <button style={{ height: "25px", padding: "0" }} type="submit" >update</button>
-                </form>)
-            }}>update</button>
+            <h3>id: <small>{cur_album.id}</small> </h3>
+            <h3 >title: <small> {cur_album.title}</small> </h3>
 
-            <div>{form}</div>
+            <div className="btnDiv">
+                <button onClick={() => delete_album()}>delete</button>
+                {/* <button onClick={() => showPhotos()}>show photos</button> */}
+                <button onClick={() => {
+                    form ? setUpdateForm(null) : setUpdateForm(<form onSubmit={() => update(event)}>
+                        <label htmlFor="title">title: </label>
+                        <input type="text" id="title" /><br />
+                        <button style={{ height: "25px", padding: "0" }} type="submit" >update</button>
+                    </form>)
+                }}>update</button>
+                      <div>{form}</div>
+            </div>
+
+      
+            <a href={`albums/${cur_album.id}/photos`}>see photos</a>
         </div>
     )
 }

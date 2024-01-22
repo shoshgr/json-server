@@ -27,9 +27,9 @@ const Comments = (props) => {
 
     return (
         <>
-            <h2>post id {postId} :comments</h2>
+            <h3>post id {postId} :comments</h3>
             <AddComment postId={postId} comments={comments} setComments={setComments} /><br />
-            <div>
+            <div className='itemList'>
                 {comments && comments.map((c) => (
                     <Comment email={user.email} key={c.id} comments={comments} setComments={setComments} comment={c} />))}
             </div>

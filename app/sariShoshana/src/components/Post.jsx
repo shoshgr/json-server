@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from 'react-router-dom';
 
+
 const Post = (props) => {
 
     const [bodyDisplay, setDisplay] = useState("none");
@@ -23,12 +24,6 @@ const Post = (props) => {
                 props.setPosts(updatedArr);
             })
             .catch(error => { console.error(error); });
-        fetch(`${url}/comments?postId=${cur_post.id}`, {
-            method: 'DELETE',
-            headers: {
-                'Content-Type': 'application/json',
-            }
-        }).catch(error => { console.error(error); });
     }
 
     const update = (event) => {
@@ -59,22 +54,23 @@ const Post = (props) => {
             .catch(error => { console.error(error); });
     }
 
-    const show_comments = () => {
-        navigate(`${cur_post.id}/comments`);
-    }
+    // const show_comments = () => {
+    //     navigate(`${cur_post.id}/comments`);
+    // }
 
     return (
-        <div style={{ backgroundColor: bodyDisplay == "none" ? "white" : "lightpink", padding: "15px" }}>
+        <div className="item" >
 
             <div onClick={() => { setDisplay(bodyDisplay == "none" ? "inline" : "none") }} key={cur_post.id} >
-                <h3>id: {cur_post.id}</h3>
-                <h3 >title: {cur_post.title}</h3>
-                <h3 style={{ display: bodyDisplay }}>body: {cur_post.body}</h3>
+                <h3>id: <small>{cur_post.id}</small></h3>
+                <h3 >title: <small> {cur_post.title}</small> </h3>
+                <h3 style={{ display: bodyDisplay }}>body: <small>{cur_post.body}</small></h3>
                 <br />
             </div >
-
+            <div className="btnDiv">
             <button onClick={() => delete_post()}>delete</button>
-            <button onClick={() => show_comments()}>comments</button>
+          
+            {/* <button onClick={() => show_comments()}>comments</button>תשני אם את לא אוהבת את הקישור */}
             <button onClick={() => {
                 form ? setUpdateForm(null) : setUpdateForm(<form onSubmit={() => update(event)}>
                     <label htmlFor="title">title: </label>
@@ -86,6 +82,8 @@ const Post = (props) => {
             }}>update</button>
 
             <div>{form}</div>
+            </div>
+            <a href={`posts/${cur_post.id}/comments`}>see comments</a>
         </div>
     )
 }

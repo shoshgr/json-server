@@ -56,7 +56,8 @@ const Albums = () => {
         }
         else
             alert(`album with ${showSearchForm.type}: ${input_value} does not exist`);
-        event.target.querySelector('#search').value = ''
+        event.target.querySelector('#search').value = '';
+        document.getElementById('search_selection').value = "none";
         setShowSearchForm({ status: 0, type: "" });
     }
 
@@ -79,22 +80,23 @@ const Albums = () => {
     return (
         <>
 
-            <h2>albums:</h2>
-            <h2>click on any album to see it's photos</h2>
+            <h3>albums:</h3>
+         
+            <div className='listOption'>
+               
 
-            <AddAlbum albums={albums} setAlbumsArr={setAlbums} /><br />
+                <label htmlFor="search_selection"> <strong>search by: </strong></label>
+                <select id='search_selection' onChange={(e) => handleSearchSelect(e.target.value)}>
+                    {searchOptions.map(option => <option key={option} value={option}>{option}</option>)}
+                </select><br />
 
-            <label htmlFor="search_selection">search by: </label>
-            <select id='search_selection' onChange={(e) => handleSearchSelect(e.target.value)}>
-                {searchOptions.map(option => <option key={option} value={option}>{option}</option>)}
-            </select><br />
-
-            <form style={{ display: showSearchForm.status ? "inline" : "none" }} id="searchForm" onSubmit={search}>
-                <input id="search" type="text" />
-                <button type="submit" >search</button>
-            </form>
-
-            <div>
+                <form style={{ display: showSearchForm.status ? "inline" : "none" }} id="searchForm" onSubmit={search}>
+                    <input id="search" type="text" />
+                    <button type="submit" >search</button>
+                </form>
+                <AddAlbum albums={albums} setAlbumsArr={setAlbums} /><br />
+            </div>
+            <div className='itemList'>
                 {(!albumsDiv && albums) ? albums.map((a) => (
                     <Album key={a.id} albums={albums} setAlbums={setAlbums} album={a} />)) : albumsDiv}
             </div>

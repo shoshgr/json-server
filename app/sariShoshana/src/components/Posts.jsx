@@ -54,7 +54,8 @@ const Posts = () => {
         }
         else
             alert(`post with ${showSearchForm.type}: ${input_value} does not exist`);
-        event.target.querySelector('#search').value = ""
+        event.target.querySelector('#search').value = "";
+        document.getElementById('search_selection').value = "none";
         setShowSearchForm({ status: 0, type: "" });
     }
 
@@ -79,13 +80,14 @@ const Posts = () => {
     return (
         <>
 
-            <h2>posts:</h2>
-            <h2>click on any post to see his body</h2>
+            <h3>posts:</h3>
+            <h4>click on any post to see his body</h4>
+            <div className='listOption'>
 
-             <AddPost posts={posts} setPosts={setPosts} /><br /> 
+           
         
 
-            <label htmlFor="search_selection">search by: </label>
+            <label htmlFor="search_selection"><strong>search by: </strong> </label>
             <select id='search_selection' onChange={(e) => handleSearchSelect(e.target.value)}>
                 {searchOptions.map(option => <option key={option} value={option}>{option}</option>)}
             </select><br />
@@ -94,8 +96,10 @@ const Posts = () => {
                 <input id="search" type="text" />
                 <button type="submit" >search</button>
             </form>
+            <AddPost posts={posts} setPosts={setPosts} /><br /> 
+            </div>
 
-            <div>
+            <div className='itemList'>
                 {(!postsDiv && posts) ? posts.map((p) => (
                     <Post key={p.id} posts={posts} setPosts={setPosts} post={p} />)) : postsDiv}
             </div>
