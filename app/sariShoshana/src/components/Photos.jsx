@@ -5,11 +5,11 @@ import { useParams,useLocation } from 'react-router-dom';
 
 const Photos = () => {
     const location = useLocation();
-    const {albumTitle} =location.state ;
+    const {albumTitle} = location.state ;
     console.log(albumTitle);
     //console.log(location.state);
 
-    const { albumId } = useParams();
+   const  albumId  = useParams();
     const [photos, setPhotos] = useState();
     const [click, setClick] = useState(0);
     const [currentPhoto, setcurrentPhoto] = useState();
