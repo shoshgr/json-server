@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link } from 'react-router-dom';
+import { Link, Outlet } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 
 const Home = () => {
@@ -13,13 +13,13 @@ const Home = () => {
 
     return (
         <>
-            {/* <button onClick={()=>navigate("posts")}>posts</button> */}
             <h3>{user.name}</h3>
             <Link to={"info"}>Info  |  </Link>
             <Link to={"todos"}>Todos  |  </Link>
             <Link to={"posts"}>Posts  |  </Link>
             <Link to={'albums'}>Albums  |  </Link>
             <Link onClick={logout} to={'/login'}>Logout</Link>
+            <Outlet />
         </>
     );
 }
