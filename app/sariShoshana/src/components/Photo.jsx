@@ -73,11 +73,12 @@ const Photo = (props) => {
     }
 
     return (
-        <div className="item" >
+        <div className="item" id="photo"  >
+            
             <div>
                 <h3>id: <small>{cur_photo.id}</small></h3>
                 <h3>title: <small>{cur_photo.title}</small></h3>
-                <img src={`${cur_photo.thumbnailUrl}`} />
+                <img  src={`${cur_photo.thumbnailUrl}`} />
             </div>
             <div className="btnDiv">
                 <button onClick={() => delete_photo()}>delete</button>

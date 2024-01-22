@@ -23,6 +23,8 @@ function Login() {
                     alert(`welcome ${userName}!`);
                     setCurUser(data[0]);
                     navigate(`/home/users/${data[0].id}`);
+                     window.history.pushState({ loggedIn: true }, "", `/home/users/${data[0].id}`);
+             
                 }
                 else {
                     alert("error username or password ");

@@ -54,9 +54,7 @@ const Post = (props) => {
             .catch(error => { console.error(error); });
     }
 
-    // const show_comments = () => {
-    //     navigate(`${cur_post.id}/comments`);
-    // }
+  
 
     return (
         <div className="item" >
@@ -70,7 +68,7 @@ const Post = (props) => {
             <div className="btnDiv">
                 <button onClick={() => delete_post()}>delete</button>
 
-                {/* <button onClick={() => show_comments()}>comments</button>תשני אם את לא אוהבת את הקישור */}
+      
                 <button onClick={() => {
                     form ? setUpdateForm(null) : setUpdateForm(<form onSubmit={() => update(event)}>
                         <label htmlFor="title">title: </label>

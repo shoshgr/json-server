@@ -9,6 +9,8 @@ const Home = () => {
 
     const logout = () => {
         localStorage.removeItem("cur_user")
+        navigate('/login');
+        window.history.replaceState(null,null,'/');
     }
 
     return (
@@ -18,7 +20,9 @@ const Home = () => {
             <Link to={"todos"}>Todos  |  </Link>
             <Link to={"posts"}>Posts  |  </Link>
             <Link to={'albums'}>Albums  |  </Link>
-            <Link onClick={logout} to={'/login'}>Logout</Link>
+         
+            {/* <Link onClick={logout} to={'/login'}  >Logout</Link> */}
+            <button id="logout" onClick={()=>logout()}>Logout</button>
             <Outlet />
         </>
     );

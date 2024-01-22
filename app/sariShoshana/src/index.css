@@ -6,7 +6,9 @@
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
   background-color: #242424;
-  background-image: url('../imgs/3.png');
+  /* background-image: url('../imgs/3.png');
+  background-repeat: no-repeat;
+   */
   background-position: center;
   /* background-size:contain; */
   background-size: cover;
@@ -24,7 +26,7 @@ a {
 }
 
 a:hover {
-  color: red;
+  color: rgb(0, 255, 110);
 }
 
 body {
@@ -33,6 +35,8 @@ body {
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
+  background-image: url('../imgs/3.png');
+  background-repeat: no-repeat;
 }
 
 h1 {
@@ -72,7 +76,18 @@ button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
-
+#logout:hover{ 
+  border: none;
+   color: rgb(0, 255, 110);}
+#logout{
+  border: none;
+  color: red;
+  margin-left: 0px;
+  font-weight: 500;
+  text-decoration: inherit; 
+  background-color: white;
+  padding: 0px;
+}
 .itemList {
   display: grid;
   grid-template-columns: 400px 400px 400px;
@@ -83,6 +98,7 @@ button:focus-visible {
   border: red 2px solid;
   margin: 7px;
   border-radius: 8px;
+
 }
 
 .listOption {
@@ -109,7 +125,8 @@ button:focus-visible {
   grid-template-columns: 100px 100px;
   text-align: center;
   margin-left: 15%;
-  margin-top: 40%;
+ 
+  margin-bottom: 4%;
 }
 
 .item>div>h3 {
@@ -214,25 +231,33 @@ button:focus-visible {
 #info {
   max-width: 800px;
   margin: 50px auto;
-  padding: 20px;
+  padding: 15px;
   background-color: #fff;
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 #info>h4 {
-  margin-left: 20px;
+  margin-left: 15px;
 }
 
 #info>h3 {
-  margin-left: 10px;
+  margin-left: 7px;
 }
-
+#info>h1{
+  font-size: 10px;
+}
+#info>h4 {text-align: left;}
+#info>h2,
+#info>h3{
+  
+}
 #info>h2,
 #info>h3,
 #info>h4 {
+  
   border-bottom: 1px solid #ddd;
-  padding-bottom: 10px;
+  padding-bottom: 5px;
 }
 
 #info>h4:first-child,
@@ -291,7 +316,17 @@ button:focus-visible {
   margin-top: 15px;
   color: #555;
 }
+.item>img{
+  height: 100px;
+  width: 100px;
+}
+#photo{
+  width: 400px;
+  height: 300px;
+}
+#photo>.btnDiv{
 
+}
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
@@ -301,7 +336,8 @@ button:focus-visible {
   a:hover {
     color: #747bff;
   }
-
+  #logout:hover{
+    color: #747bff; }
   button {
     background-color: #f9f9f9;
   }
