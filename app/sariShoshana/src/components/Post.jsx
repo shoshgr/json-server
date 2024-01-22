@@ -68,20 +68,20 @@ const Post = (props) => {
                 <br />
             </div >
             <div className="btnDiv">
-            <button onClick={() => delete_post()}>delete</button>
-          
-            {/* <button onClick={() => show_comments()}>comments</button>תשני אם את לא אוהבת את הקישור */}
-            <button onClick={() => {
-                form ? setUpdateForm(null) : setUpdateForm(<form onSubmit={() => update(event)}>
-                    <label htmlFor="title">title: </label>
-                    <input type="text" id="title" /><br />
-                    <label htmlFor="body">body </label>
-                    <input type="text" id="body" /><br />
-                    <button style={{ height: "25px", padding: "0" }} type="submit" >update</button>
-                </form>)
-            }}>update</button>
+                <button onClick={() => delete_post()}>delete</button>
 
-            <div>{form}</div>
+                {/* <button onClick={() => show_comments()}>comments</button>תשני אם את לא אוהבת את הקישור */}
+                <button onClick={() => {
+                    form ? setUpdateForm(null) : setUpdateForm(<form onSubmit={() => update(event)}>
+                        <label htmlFor="title">title: </label>
+                        <input type="text" id="title" /><br />
+                        <label htmlFor="body">body </label>
+                        <input type="text" id="body" /><br />
+                        <button style={{ height: "25px", padding: "0" }} type="submit" >update</button>
+                    </form>)
+                }}>update</button>
+
+                <div>{form}</div>
             </div>
             <a href={`posts/${cur_post.id}/comments`}>see comments</a>
         </div>

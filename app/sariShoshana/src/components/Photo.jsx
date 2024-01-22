@@ -75,17 +75,16 @@ const Photo = (props) => {
     return (
         <div className="item" >
             <div>
-                <img src={`${cur_photo.thumbnailUrl}`} />
-
                 <h3>id: <small>{cur_photo.id}</small></h3>
-                <br />
+                <h3>title: <small>{cur_photo.title}</small></h3>
+                <img src={`${cur_photo.thumbnailUrl}`} />
             </div>
             <div className="btnDiv">
                 <button onClick={() => delete_photo()}>delete</button>
                 <button onClick={() => { update_photo() }}>update</button>
                 <div>{form}</div>
             </div>
-        
+
         </div>
     );
 };

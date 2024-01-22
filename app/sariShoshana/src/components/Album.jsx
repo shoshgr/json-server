@@ -78,10 +78,10 @@ const Album = (props) => {
                         <button style={{ height: "25px", padding: "0" }} type="submit" >update</button>
                     </form>)
                 }}>update</button>
-                      <div>{form}</div>
+                <div>{form}</div>
             </div>
 
-      
+
             <a href={`albums/${cur_album.id}/photos`}>see photos</a>
         </div>
     )

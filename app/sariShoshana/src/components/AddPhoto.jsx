@@ -14,7 +14,7 @@ const AddPhoto = (props) => {
             .then((response) => response.json())
             .then((json) => {
                 console.log(json)
-                setId(json[0].nextPhotoId);
+                setId(json[0].nextPhotoId + 1);
 
             });
     }

@@ -15,7 +15,7 @@ const AddAlbum = (props) => {
             .then((response) => response.json())
             .then((json) => {
                 console.log(json)
-                setId(json[0].nextAlbumId);
+                setId(json[0].nextAlbumId + 1);
             });
     }
 

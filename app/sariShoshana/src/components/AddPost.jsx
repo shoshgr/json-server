@@ -15,7 +15,7 @@ const AddPost = (props) => {
             .then((response) => response.json())
             .then((json) => {
                 console.log(json)
-                setId(json[0].nextPostId);
+                setId(json[0].nextPostId + 1);
             });
     }
 

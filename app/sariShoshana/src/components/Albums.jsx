@@ -54,11 +54,14 @@ const Albums = () => {
                 <Album albums={albums} setAlbums={setAlbums} album={a} />)))
             navigate(`?${showSearchForm.type}=${input_value}`);
         }
-        else
+        else {
             alert(`album with ${showSearchForm.type}: ${input_value} does not exist`);
+            setShowSearchForm({ status: 0, type: "" });
+            document.getElementById('search_selection').value = "none";
+            setAlbumsScreen()
+        }
         event.target.querySelector('#search').value = '';
-        document.getElementById('search_selection').value = "none";
-        setShowSearchForm({ status: 0, type: "" });
+        setSearchArr([]);
     }
 
     const handleSearchSelect = (value) => {
@@ -81,9 +84,9 @@ const Albums = () => {
         <>
 
             <h3>albums:</h3>
-         
+
             <div className='listOption'>
-               
+
 
                 <label htmlFor="search_selection"> <strong>search by: </strong></label>
                 <select id='search_selection' onChange={(e) => handleSearchSelect(e.target.value)}>

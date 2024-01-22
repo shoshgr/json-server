@@ -24,7 +24,7 @@ const Photos = (props) => {
                     setPhotos(data);
                     setcurrentPhoto(data[click]);
                     setClick(click + 1);
-                    if(data.length==0){
+                    if (data.length == 0 || data.length == 1) {
                         setNextBtn("none");
                     }
                 }
@@ -32,7 +32,7 @@ const Photos = (props) => {
                     let arr = []
                     photos.map(p => arr.push(p))
                     data.map(p => arr.push(p))
-                    
+
                     setPhotos(arr);
                 } console.log(photos);
             });
@@ -40,20 +40,19 @@ const Photos = (props) => {
 
     useEffect(() => {
         fetchArr(0, 10);
-  
     }, []);
 
     const next = async () => {
-        if (photos[photos.length - 2].id == currentPhoto.id)
-           { setNextBtn("none");
-            setcurrentPhoto(photos[photos.length-1]);
-            }
+        if (photos[photos.length - 2].id == currentPhoto.id) {
+            setNextBtn("none");
+            setcurrentPhoto(photos[photos.length - 1]);
+        }
         else {
             setClick(click + 1);
             console.log(photos)
             await setcurrentPhoto(photos[click]);
             console.log(currentPhoto);
-            if (currentPhoto.id==photos[photos.length-3].id)
+            if (currentPhoto.id == photos[photos.length - 3].id)
                 fetchArr(click + 2, click + 12);
         }
         setPrevBtn("inline");
@@ -80,9 +79,7 @@ const Photos = (props) => {
             <div>
                 <button style={{ display: prevBtn }} onClick={() => prev()}>prev</button>
                 {currentPhoto && <Photo setClick={setClick} setcurrentPhoto={setcurrentPhoto} click={click} key={currentPhoto.id} photos={photos} setPhotos={setPhotos} photo={currentPhoto} />}
-               <button style={{ display: nextBtn }} onClick={() => next()}>next</button>
-
-
+                <button style={{ display: nextBtn }} onClick={() => next()}>next</button>
             </div>
         </>
     );

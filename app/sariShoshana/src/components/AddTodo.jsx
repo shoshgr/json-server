@@ -15,7 +15,7 @@ const AddTodo = (props) => {
             .then((response) => response.json())
             .then((json) => {
                 console.log(json)
-                setId(json[0].nextTodoId);
+                setId(json[0].nextTodoId + 1);
 
             });
     }
@@ -29,7 +29,7 @@ const AddTodo = (props) => {
 
         let todo = {
             userId: user.id,
-            id: id,
+            id: `${id}`,
             title: event.target.querySelector('#title').value,
             completed: event.target.querySelector('#completed').checked
         }

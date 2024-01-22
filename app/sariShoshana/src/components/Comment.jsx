@@ -79,14 +79,14 @@ const Comment = (props) => {
                 <br />
             </div>
             <div className="btnDiv">
-            <button onClick={() => {
-                user.email == cur_comment.email ? delete_comment() : alert("can not delete not your comment")
-            }} >delete</button>
+                <button onClick={() => {
+                    user.email == cur_comment.email ? delete_comment() : alert("can not delete not your comment")
+                }} >delete</button>
 
-            <button onClick={() => { update_comment() }}>update</button>
-            <div>{form}</div>
+                <button onClick={() => { update_comment() }}>update</button>
+                <div>{form}</div>
             </div>
-       
+
         </div>
     );
 };

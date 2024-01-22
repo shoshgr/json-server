@@ -15,7 +15,7 @@ const AddComment = (props) => {
             .then((response) => response.json())
             .then((json) => {
                 console.log(json)
-                setId(json[0].nextCommentId);
+                setId(json[0].nextCommentId + 1);
             });
     }
 

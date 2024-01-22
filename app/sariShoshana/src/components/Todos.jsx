@@ -4,6 +4,7 @@ import AddTodo from './AddTodo';
 import Todo from './Todo';
 
 const Todos = () => {
+
     const navigate = useNavigate();
     const user = JSON.parse(localStorage.getItem("cur_user"));
     const url = 'http://localhost:3002/todos';
@@ -56,12 +57,14 @@ const Todos = () => {
                 <Todo todos={todos} setTodosArr={setTodosArr} todo={t} />)))
             navigate(`?${showSearchForm.type}=${input_value}`);
         }
-        else
+        else {
             alert(`todo with ${showSearchForm.type}: ${input_value} does not exist`);
+            navigate("")
+            setTodosScreen()
+            document.getElementById('search_selection').value = "none";
+        }
         event.target.querySelector('#search').value = "";
-      
-    
-       
+        setSearch([]);
     }
 
     const handleSearchSelect = (value) => {
@@ -76,7 +79,6 @@ const Todos = () => {
                 setShowSearchForm({ status: 1, type: "completed" });
                 break;
             default:
-              
                 setShowSearchForm({ status: 0, type: "none" });
                 setTodosScreen();
                 navigate("");
@@ -115,10 +117,10 @@ const Todos = () => {
         <>
 
             <h3>Todos:</h3>
-    
+
             <div className='listOption'>
-              
-            {todos && (<>
+
+                {todos && (<>
                     <label htmlFor="sort_selection">order by: </label>
                     <select id='sort_selection' onChange={(e) => handleSortSelect(e.target.value)}>
                         {sortOptions.map(option => <option key={option} value={option}>{option}</option>)}
@@ -128,14 +130,17 @@ const Todos = () => {
                 <label htmlFor="search_selection">search by: </label>
                 <select id='search_selection' onChange={(e) => handleSearchSelect(e.target.value)}>
                     {searchOptions.map(option => <option key={option} value={option}>{option}</option>)}
-                </select><br />
-             
-                <form style={{ display: showSearchForm.status ? "inline" : "none" }} id="searchForm" onSubmit={search}>
+                </select>
+
+                <form style={{ display: showSearchForm.status ? "inline" : "none" }}
+                    id="searchForm" onSubmit={search}>
                     <input id="search" type="text" />
                     <button type="submit" >search</button>
                 </form>
+
                 <AddTodo todos={todos} setTodosArr={setTodosArr} />
             </div>
+            
             <div className='itemList'>
                 {(!todosDiv && todos) ? todos.map((t) => (
                     <Todo key={t.id} todos={todos} setTodosArr={setTodosArr} todo={t} />)) : todosDiv}

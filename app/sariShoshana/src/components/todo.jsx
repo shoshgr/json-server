@@ -62,25 +62,19 @@ const Todo = (props) => {
             <label>completed: </label>
             <input type="checkbox" readOnly checked={cur_todo.completed}></input>
 
-        
             <div className="btnDiv">
-            <button 
-                onClick={() => delete_todo()}>delete</button>
-
-            <button onClick={() => {
-                form ? setUpdateForm(null) : setUpdateForm(<form onSubmit={() => update(event)}>
-                 
-                    <label htmlFor="title">title: </label>
-                    <input type="text" id="title" />
-                    <label  > change status: </label>
-                     <br />
-                    <input type="checkbox"  />
-                   
-                    <button  type="submit" >update</button>
-                </form>)
-            }}>update</button>
-            
-            <div>{form}</div>
+                <button onClick={() => delete_todo()}>delete</button>
+                <button onClick={() => {
+                    form ? setUpdateForm(null) : setUpdateForm(<form onSubmit={() => update(event)}>
+                        <label htmlFor="title">title: </label>
+                        <input type="text" id="title" />
+                        <label  > change status: </label>
+                        <br />
+                        <input type="checkbox" />
+                        <button type="submit" >update</button>
+                    </form>)
+                }}>update</button>
+                <div>{form}</div>
             </div>
         </div >
     </>)
