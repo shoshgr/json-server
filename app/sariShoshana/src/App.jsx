@@ -42,7 +42,7 @@ function App() {
 
             <Route exact path='albums' element={<Layout />}>
               <Route index element={<Albums />} />
-              <Route path=":albumId/photos" element={<Photos />} />
+              <Route  path=":albumId/photos" element={<Photos />} />
             </Route>
 
             <Route exact path="posts" element={<Layout />} >

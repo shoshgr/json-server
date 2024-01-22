@@ -36,7 +36,7 @@ body {
   min-width: 320px;
   min-height: 100vh;
   background-image: url('../imgs/3.png');
-  background-repeat: no-repeat;
+  background-repeat: repeat;
 }
 
 h1 {

@@ -1,9 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import Photo from './Photo';
 import AddPhoto from './AddPhoto';
-import { useParams } from 'react-router-dom';
+import { useParams,useLocation } from 'react-router-dom';
 
-const Photos = (props) => {
+const Photos = () => {
+    const location = useLocation();
+    const {albumTitle} =location.state ;
+    console.log(albumTitle);
+    //console.log(location.state);
 
     const { albumId } = useParams();
     const [photos, setPhotos] = useState();
@@ -74,12 +78,15 @@ const Photos = (props) => {
 
     return (
         <>
-            <h3>album id {albumId} :photos</h3>
+        
+            <h3>album id {albumTitle} {albumId} :photos</h3>
             <AddPhoto albumId={albumId} photos={photos} setPhotos={setPhotos} /><br />
             <div>
-                <button style={{ display: prevBtn }} onClick={() => prev()}>prev</button>
+               
                 {currentPhoto && < Photo setClick={setClick} setcurrentPhoto={setcurrentPhoto} click={click} key={currentPhoto.id} photos={photos} setPhotos={setPhotos} photo={currentPhoto} />}
+                <button style={{ display: prevBtn }} onClick={() => prev()}>prev</button>
                 <button style={{ display: nextBtn }} onClick={() => next()}>next</button>
+              
             </div>
         </>
     );

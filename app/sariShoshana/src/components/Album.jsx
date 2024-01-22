@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const Album = (props) => {
 
@@ -81,8 +82,8 @@ const Album = (props) => {
                 <div>{form}</div>
             </div>
 
-
-            <a href={`albums/${cur_album.id}/photos`}>see photos</a>
+            <Link to={{ pathname:`./${cur_album.id}/photos`, state: { "albumTitle": cur_album.title } }}>Go to Photos</Link>
+            {/* <a href={`albums/${cur_album.id}/photos`} >see photos</a> */}
         </div>
     )
 }
