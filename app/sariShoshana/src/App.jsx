@@ -32,9 +32,10 @@ function App() {
           <Route path="/" element={<Navigate to="/login" />} />
           <Route path="/login" element={<Login />} />
 
-          <Route path="/register" element={<Register />}>
+          <Route exact path="/register" element={<Layout />}>
+            <Route index element={<Register />} />
+            <Route path="details" element={<UserDetails />} />
           </Route>
-          <Route path="/register/details" element={<UserDetails />} />
 
           <Route path="/home/users/:id" element={<Home />}>
             <Route path="info" element={<Info />} />
