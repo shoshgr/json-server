@@ -103,6 +103,7 @@ grid-template-columns: 400px 400px 400px;
   margin-top: 40%;
   
 }
+
 .item>div>h3{
 text-align: left;
 }
@@ -123,6 +124,10 @@ margin: 2px;
 
  border-radius: 20px;
 }
+.item>.btnDiv>form{
+  width:50px;
+}
+
 .item>a{
   color: black;
   text-decoration: solid;
@@ -201,7 +206,87 @@ top: 110%;
 .getInForm >button {
   width: 48%;
 }
+#info {
+  max-width: 800px;
+  margin: 50px auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
 
+
+
+#info > h4 {
+  margin-left: 20px;
+}
+
+#info > h3 {
+  margin-left: 10px;
+}
+
+#info > h2,
+#info > h3,
+#info > h4 {
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 10px;
+}
+
+#info > h4:first-child,
+#info > h3:first-child {
+  margin-top: 0;
+}
+
+#info > h4:last-child,
+#info > h3:last-child {
+  margin-bottom: 0;
+}
+#details {
+  max-width: 400px;
+  width: 600px;
+  margin: 50px auto;
+  padding: 100px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#details>form {
+  display: flex;
+  flex-direction: column;
+}
+
+#details>label {
+  margin-bottom: 8px;
+  color: #333;
+}
+
+#details>input {
+  padding: 10px;
+  margin-bottom: 15px;
+  box-sizing: border-box;
+  border: 1px solid #ced4da;
+  border-radius: 4px;
+}
+
+#details>button {
+  background-color: #007bff;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+#details>button:hover {
+  background-color: #0056b3;
+}
+
+#details>h4 {
+  margin-top: 15px;
+  color: #555;
+}
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;

@@ -76,7 +76,7 @@ const Photos = (props) => {
             <div>
                 <button style={{ display: prevBtn }} onClick={() => prev()}>prev</button>
                 {currentPhoto && <Photo setClick={setClick} setcurrentPhoto={setcurrentPhoto} click={click} key={currentPhoto.id} photos={photos} setPhotos={setPhotos} photo={currentPhoto} />}
-                <button style={{ display: nextBtn }} onClick={() => next()}>next</button>
+               { photos&& <button style={{ display: nextBtn }} onClick={() => next()}>next</button>}
             </div>
         </>
     );

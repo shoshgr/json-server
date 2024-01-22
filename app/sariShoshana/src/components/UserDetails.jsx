@@ -80,7 +80,7 @@ const UserDetails = () => {
   }
 
   return (
-    <>
+    <div id="details">
       <form onSubmit={setUser} action="">
         <label htmlFor="name">name: </label>
         <input type='text' id='name' />
@@ -88,7 +88,7 @@ const UserDetails = () => {
         <label htmlFor="email">email: </label>
         <input type='email' id='email' />
         <br />
-        <h3>address:</h3>
+        <h4>address:</h4>
         <label htmlFor="street"> street: </label>
         <input type='text' id='street' />
         <br />
@@ -101,7 +101,7 @@ const UserDetails = () => {
         <label htmlFor="zipcode"> zipcode: </label>
         <input type='text' id='zipcode' />
         <br />
-        <h3>geo:</h3>
+        <h4>geo:</h4>
         <label htmlFor="lat"> lat: </label>
         <input type='text' id='lat' />
         <br />
@@ -111,7 +111,7 @@ const UserDetails = () => {
         <label htmlFor="phone"> phone: </label>
         <input type='text' id='phone' />
         <br />
-        <h3>company:</h3>
+        <h4>company:</h4>
         <label htmlFor="company_name"> name: </label>
         <input type='text' id='company_name' />
         <label htmlFor="catchPhrase"> catchPhrase: </label>
@@ -121,7 +121,7 @@ const UserDetails = () => {
         <br />
         <button type="submit">register </button>
       </form>
-    </>
+    </div>
   );
 }
 
