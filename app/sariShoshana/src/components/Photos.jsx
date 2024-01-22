@@ -37,6 +37,9 @@ const Photos = (props) => {
 
     useEffect(() => {
         fetchArr(0, 10);
+        if(!photos){
+            setNextBtn("none");
+        }
     }, []);
 
     const next = async () => {

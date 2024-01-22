@@ -124,7 +124,7 @@ margin: 2px;
 
  border-radius: 20px;
 }
-.item>.btnDiv>form{
+.item>.btnDiv>div>form{
   width:50px;
 }
 
@@ -132,16 +132,6 @@ margin: 2px;
   color: black;
   text-decoration: solid;
 top: 110%;
-}
-
-/* Style for alert messages */
-.alert {
-  margin-top: 15px;
-  padding: 10px;
-  background-color: #f44336;
-  color: white;
-  border-radius: 3px;
-  display: none;
 }
 
 
