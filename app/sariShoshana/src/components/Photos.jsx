@@ -24,12 +24,15 @@ const Photos = (props) => {
                     setPhotos(data);
                     setcurrentPhoto(data[click]);
                     setClick(click + 1);
-
+                    if(data.length==0){
+                        setNextBtn("none");
+                    }
                 }
                 else {
                     let arr = []
                     photos.map(p => arr.push(p))
                     data.map(p => arr.push(p))
+                    
                     setPhotos(arr);
                 } console.log(photos);
             });
@@ -37,9 +40,7 @@ const Photos = (props) => {
 
     useEffect(() => {
         fetchArr(0, 10);
-        if(!photos){
-            setNextBtn("none");
-        }
+  
     }, []);
 
     const next = async () => {
@@ -79,7 +80,9 @@ const Photos = (props) => {
             <div>
                 <button style={{ display: prevBtn }} onClick={() => prev()}>prev</button>
                 {currentPhoto && <Photo setClick={setClick} setcurrentPhoto={setcurrentPhoto} click={click} key={currentPhoto.id} photos={photos} setPhotos={setPhotos} photo={currentPhoto} />}
-               { photos&& <button style={{ display: nextBtn }} onClick={() => next()}>next</button>}
+               <button style={{ display: nextBtn }} onClick={() => next()}>next</button>
+
+
             </div>
         </>
     );

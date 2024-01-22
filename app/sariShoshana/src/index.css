@@ -133,7 +133,9 @@ margin: 2px;
   text-decoration: solid;
 top: 110%;
 }
-
+#change{
+  width: 50px;
+}
 
 .getInForm {
   max-width: 400px;

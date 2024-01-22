@@ -69,10 +69,13 @@ const Todo = (props) => {
 
             <button onClick={() => {
                 form ? setUpdateForm(null) : setUpdateForm(<form onSubmit={() => update(event)}>
+                 
                     <label htmlFor="title">title: </label>
                     <input type="text" id="title" />
-                    <label htmlFor="completed"> status:</label>
-                    <input type="checkbox" id="completed" />
+                    <label  > change status: </label>
+                     <br />
+                    <input type="checkbox"  />
+                   
                     <button  type="submit" >update</button>
                 </form>)
             }}>update</button>

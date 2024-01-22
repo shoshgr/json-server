@@ -59,8 +59,9 @@ const Todos = () => {
         else
             alert(`todo with ${showSearchForm.type}: ${input_value} does not exist`);
         event.target.querySelector('#search').value = "";
-        document.getElementById('search_selection').value = "none";
-        setShowSearchForm({ status: 0, type: "" });
+      
+    
+       
     }
 
     const handleSearchSelect = (value) => {
@@ -75,6 +76,7 @@ const Todos = () => {
                 setShowSearchForm({ status: 1, type: "completed" });
                 break;
             default:
+              
                 setShowSearchForm({ status: 0, type: "none" });
                 setTodosScreen();
                 navigate("");
@@ -127,11 +129,12 @@ const Todos = () => {
                 <select id='search_selection' onChange={(e) => handleSearchSelect(e.target.value)}>
                     {searchOptions.map(option => <option key={option} value={option}>{option}</option>)}
                 </select><br />
-                <AddTodo todos={todos} setTodosArr={setTodosArr} />
+             
                 <form style={{ display: showSearchForm.status ? "inline" : "none" }} id="searchForm" onSubmit={search}>
                     <input id="search" type="text" />
                     <button type="submit" >search</button>
                 </form>
+                <AddTodo todos={todos} setTodosArr={setTodosArr} />
             </div>
             <div className='itemList'>
                 {(!todosDiv && todos) ? todos.map((t) => (
