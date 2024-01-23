@@ -6,7 +6,7 @@ const UserDetails = () => {
 
   const url = 'http://localhost:3002'
   let id;
-  const { cur_user, set_User } = useContext(user);
+  const { cur_user, set_User } = useContext(curUser);
   const navigate = useNavigate()
 
   const setLocalUser = (user) => {
