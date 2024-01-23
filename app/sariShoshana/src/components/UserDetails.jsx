@@ -83,33 +83,33 @@ const UserDetails = () => {
     <div id="details">
       <form onSubmit={setUser} action="">
         <label htmlFor="name">name: </label>
-        <input type='text' id='name' />
+        <input type='text' id='name' required />
         <br />
         <label htmlFor="email">email: </label>
-        <input type='email' id='email' />
+        <input type='email' id='email' required />
         <br />
         <h4>address:</h4>
         <label htmlFor="street"> street: </label>
-        <input type='text' id='street' />
+        <input type='text' id='street' required />
         <br />
         <label htmlFor="suite"> suite: </label>
-        <input type='text' id='suite' />
+        <input type='text' id='suite' required />
         <br />
         <label htmlFor="city"> city: </label>
-        <input type='text' id='city' />
+        <input type='text' id='city'  required/>
         <br />
         <label htmlFor="zipcode"> zipcode: </label>
-        <input type='text' id='zipcode' />
+        <input type='text' id='zipcode' required/>
         <br />
         <h4>geo:</h4>
         <label htmlFor="lat"> lat: </label>
-        <input type='text' id='lat' />
+        <input type='text' id='lat'  />
         <br />
         <label htmlFor="lng"> lng: </label>
         <input type='text' id='lng' />
         <br />
         <label htmlFor="phone"> phone: </label>
-        <input type='text' id='phone' />
+        <input type="number" id='phone' required />
         <br />
         <h4>company:</h4>
         <label htmlFor="company_name"> name: </label>
