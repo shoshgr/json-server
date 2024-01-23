@@ -30,7 +30,7 @@ const UserDetails = () => {
 
   const setUser = (event) => {
     const user = {
-      "id": id,
+      "id": `${id}`,
       "name": event.target.querySelector('#name').value,
       "username": cur_user.name,
       "email": event.target.querySelector('#email').value,

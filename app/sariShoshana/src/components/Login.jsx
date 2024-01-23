@@ -27,7 +27,7 @@ function Login() {
              
                 }
                 else {
-                    alert("error username or password ");
+                    alert("user does not exist please register");
                     event.target.querySelector('#name').value = "";
                     event.target.querySelector('#password').value = "";
                 }

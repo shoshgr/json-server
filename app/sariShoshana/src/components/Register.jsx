@@ -18,7 +18,7 @@ const Register = () => {
                     navigate("/login");
                 }
                 else {
-                    navigate("/register/details")
+                    navigate("./details")
                 }
             })
     }
