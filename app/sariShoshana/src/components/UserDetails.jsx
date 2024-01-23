@@ -6,11 +6,11 @@ const UserDetails = () => {
 
   const url = 'http://localhost:3002'
   let id;
-  const { cur_user, set_User } = useContext(curUser);
+  const { cur_user, set_User } = useContext(user);
   const navigate = useNavigate()
 
-  const setLocalUser = () => {
-    localStorage.setItem("cur_user", JSON.stringify(cur_user));
+  const setLocalUser = (user) => {
+    localStorage.setItem("cur_user", JSON.stringify(user));
   }
 
   function fetchID() {
@@ -59,7 +59,7 @@ const UserDetails = () => {
       headers: {
         "Content-type": "application/json; charset=UTF-8",
       }
-    })
+    }).catch(error=>console.log(error));
 
     const next_id = {
       "nextUserId": id + 1
@@ -71,10 +71,10 @@ const UserDetails = () => {
       headers: {
         "Content-type": "application/json; charset=UTF-8",
       },
-    })
-      .then((response) => response.json()).then((json) => console.log(json));
+    }).catch(error=>console.log(error));
+      
 
-    setLocalUser(cur_user);
+    setLocalUser(user);
     alert(`welcome ${cur_user.name}!`);
     navigate(`/home/users/${id}`);
   }

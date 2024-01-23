@@ -89,6 +89,8 @@ button:focus-visible {
   padding: 0px;
 }
 .itemList {
+  /* background-image: url('../imgs/3.png');
+  background-repeat: repeat; */
   display: grid;
   grid-template-columns: 400px 400px 400px;
 }
