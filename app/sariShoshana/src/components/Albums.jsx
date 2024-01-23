@@ -86,19 +86,17 @@ const Albums = () => {
             <h3>albums:</h3>
 
             <div className='listOption'>
-
-
                 <label htmlFor="search_selection"> <strong>search by: </strong></label>
                 <select id='search_selection' onChange={(e) => handleSearchSelect(e.target.value)}>
                     {searchOptions.map(option => <option key={option} value={option}>{option}</option>)}
                 </select><br />
-
                 <form style={{ display: showSearchForm.status ? "inline" : "none" }} id="searchForm" onSubmit={search}>
                     <input id="search" type="text" />
                     <button type="submit" >search</button>
                 </form>
                 <AddAlbum albums={albums} setAlbumsArr={setAlbums} /><br />
             </div>
+
             <div className='itemList'>
                 {(!albumsDiv && albums) ? albums.map((a) => (
                     <Album key={a.id} albums={albums} setAlbums={setAlbums} album={a} />)) : albumsDiv}

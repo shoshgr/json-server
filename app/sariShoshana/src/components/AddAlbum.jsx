@@ -61,7 +61,7 @@ const AddAlbum = (props) => {
     }
 
     return (<>
-        <button onClick={() => { showForm == "none" ? setShowForm("inline") : setShowForm("none") }}>add a album</button>
+        <button onClick={() => { showForm == "none" ? setShowForm("inline") : setShowForm("none") }}>add an album</button>
         <form onSubmit={() => add(event)} style={{ display: showForm }}>
             <label htmlFor="title">title:</label>
             <input type="text" id="title" />

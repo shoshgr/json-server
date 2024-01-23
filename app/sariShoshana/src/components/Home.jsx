@@ -20,8 +20,6 @@ const Home = () => {
             <Link to={"todos"}>Todos  |  </Link>
             <Link to={"posts"}>Posts  |  </Link>
             <Link to={'albums'}>Albums  |  </Link>
-         
-            {/* <Link onClick={logout} to={'/login'}  >Logout</Link> */}
             <button id="logout" onClick={()=>logout()}>Logout</button>
             <Outlet />
         </>

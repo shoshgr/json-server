@@ -55,7 +55,6 @@ const Comment = (props) => {
             .then(setUpdateForm(null)).catch(error => {
                 console.error(error);
             });
-
     }
 
     const update_comment = () => {
@@ -63,7 +62,6 @@ const Comment = (props) => {
             (form ? setUpdateForm(null) : setUpdateForm(<form onSubmit={() => update(event)}>
                 <label htmlFor="name">name: </label>
                 <input type="text" id="name" /><br />
-
                 <label htmlFor="completed"> body:</label>
                 <input type="text" id="body" /><br />
                 <button style={{ height: "25px", padding: "0" }} type="submit" >update</button>
@@ -86,7 +84,6 @@ const Comment = (props) => {
                 <button onClick={() => { update_comment() }}>update</button>
                 <div>{form}</div>
             </div>
-
         </div>
     );
 };

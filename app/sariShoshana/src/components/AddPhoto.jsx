@@ -73,7 +73,7 @@ const AddPhoto = (props) => {
             <input type="text" id="url" /><br />
             <label htmlFor="thumbnailUrl"> thumbnailUrl:</label>
             <input type="text" id="thumbnailUrl" /><br />
-            <button style={{ height: "25px", padding: "0" }} type="submit" >add photo</button>
+            <button style={{ height: "25px", padding: "0" }} type="submit" >add</button>
         </form>
     </>);
 }

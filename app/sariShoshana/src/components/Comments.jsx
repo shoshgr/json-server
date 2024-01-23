@@ -3,7 +3,7 @@ import Comment from './Comment';
 import AddComment from './AddComment';
 import { useParams } from 'react-router-dom';
 
-const Comments = (props) => {
+const Comments = () => {
 
     const { postId } = useParams();
     const user = JSON.parse(localStorage.getItem("cur_user"));

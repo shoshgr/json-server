@@ -70,7 +70,7 @@ const AddTodo = (props) => {
             <input type="text" id="title" />
             <label htmlFor="completed">completed:</label>
             <input type="checkbox" id="completed" />
-            <button type="submit" >add todo</button>
+            <button type="submit" >add</button>
         </form>
     </>);
 }

@@ -1,14 +1,11 @@
 import React, { useState } from "react";
-import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 
 const Album = (props) => {
 
-
     const cur_album = props.album;
     const [form, setUpdateForm] = useState();
     const url = "http://localhost:3002";
-    const navigate = useNavigate();
 
     const delete_album = () => {
         fetch(`${url}/albums/${cur_album.id}`, {
@@ -58,20 +55,14 @@ const Album = (props) => {
             });
     }
 
-    // const showPhotos = () => {
-    //     navigate(`${cur_album.id}/photos`);
-    // }
-
     return (
         <div className="item">
-
 
             <h3>id: <small>{cur_album.id}</small> </h3>
             <h3 >title: <small> {cur_album.title}</small> </h3>
 
             <div className="btnDiv">
                 <button onClick={() => delete_album()}>delete</button>
-                {/* <button onClick={() => showPhotos()}>show photos</button> */}
                 <button onClick={() => {
                     form ? setUpdateForm(null) : setUpdateForm(<form onSubmit={() => update(event)}>
                         <label htmlFor="title">title: </label>
@@ -82,8 +73,7 @@ const Album = (props) => {
                 <div>{form}</div>
             </div>
 
-            <Link to={{ pathname:`./${cur_album.id}/photos`, state: { albumTitle: cur_album.title } }}>Go to Photos</Link>
-            {/* <a href={`albums/${cur_album.id}/photos`} >see photos</a> */}
+            <Link to={{ pathname: `./${cur_album.id}/photos`, state: { albumTitle: cur_album.title } }}>see photos</Link>
         </div>
     )
 }

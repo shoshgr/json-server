@@ -12,6 +12,7 @@ const Posts = () => {
     const [postsDiv, setPostsDiv] = useState(null);
     const [searchArr, setSearch] = useState([]);
     const [showSearchForm, setShowSearchForm] = useState({ status: 0, type: "" });
+    const searchOptions = ["none", "id", "title"]
 
     const setPostsScreen = () => {
         setPostsDiv(posts && posts.map((p) => (
@@ -79,15 +80,12 @@ const Posts = () => {
         setSearch([]);
     };
 
-    const searchOptions = ["none", "id", "title"]
-
     return (
         <>
             <h3>posts:</h3>
             <h4>click on any post to see his body</h4>
 
             <div className='listOption'>
-
                 <label htmlFor="search_selection"><strong>search by: </strong> </label>
                 <select id='search_selection' onChange={(e) => handleSearchSelect(e.target.value)}>
                     {searchOptions.map(option => <option key={option} value={option}>{option}</option>)}

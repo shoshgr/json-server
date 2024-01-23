@@ -1,6 +1,4 @@
 import React, { useState } from "react";
-import { useNavigate } from 'react-router-dom';
-
 
 const Post = (props) => {
 
@@ -8,7 +6,6 @@ const Post = (props) => {
     const cur_post = props.post;
     const [form, setUpdateForm] = useState();
     const url = "http://localhost:3002";
-    const navigate = useNavigate();
 
     const delete_post = () => {
         fetch(`${url}/posts/${cur_post.id}`, {
@@ -54,11 +51,8 @@ const Post = (props) => {
             .catch(error => { console.error(error); });
     }
 
-  
-
     return (
         <div className="item" >
-
             <div onClick={() => { setDisplay(bodyDisplay == "none" ? "inline" : "none") }} key={cur_post.id} >
                 <h3>id: <small>{cur_post.id}</small></h3>
                 <h3 >title: <small> {cur_post.title}</small> </h3>
@@ -67,8 +61,6 @@ const Post = (props) => {
             </div >
             <div className="btnDiv">
                 <button onClick={() => delete_post()}>delete</button>
-
-      
                 <button onClick={() => {
                     form ? setUpdateForm(null) : setUpdateForm(<form onSubmit={() => update(event)}>
                         <label htmlFor="title">title: </label>
@@ -78,7 +70,6 @@ const Post = (props) => {
                         <button style={{ height: "25px", padding: "0" }} type="submit" >update</button>
                     </form>)
                 }}>update</button>
-
                 <div>{form}</div>
             </div>
             <a href={`posts/${cur_post.id}/comments`}>see comments</a>

@@ -70,7 +70,7 @@ const AddComment = (props) => {
             <input type="text" id="name" /><br />
             <label htmlFor="body"> body:</label>
             <input type="text" id="body" /><br />
-            <button style={{ height: "25px", padding: "0" }} type="submit" >add comment</button>
+            <button style={{ height: "25px", padding: "0" }} type="submit" >add</button>
         </form>
     </>);
 }

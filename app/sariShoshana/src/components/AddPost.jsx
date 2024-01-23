@@ -74,7 +74,7 @@ const AddPost = (props) => {
             <input type="text" id="title" />
             <label htmlFor="body">body:</label>
             <input type="text" id="body" />
-            <button type="submit" >add post</button>
+            <button type="submit" >add</button>
         </form>
     </>);
 }

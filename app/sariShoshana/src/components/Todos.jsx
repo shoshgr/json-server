@@ -62,6 +62,7 @@ const Todos = () => {
             navigate("")
             setTodosScreen()
             document.getElementById('search_selection').value = "none";
+            setShowSearchForm({ status: 0, type: "none" })
         }
         event.target.querySelector('#search').value = "";
         setSearch([]);

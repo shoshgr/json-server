@@ -1,4 +1,4 @@
-import "../index.css"
+
 const Info = () => {
 
     let user = JSON.parse(localStorage.getItem("cur_user"));

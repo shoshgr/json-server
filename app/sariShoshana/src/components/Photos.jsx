@@ -1,23 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import Photo from './Photo';
 import AddPhoto from './AddPhoto';
-import { useParams,useLocation } from 'react-router-dom';
+import { useParams, useLocation } from 'react-router-dom';
 
 const Photos = () => {
-    // const location = useLocation();
-    // const albumTitle = location.state ;
-    // console.log(albumTitle);
-    console.log(location.state);
 
-   const  albumId  = useParams().albumId;
-   
+    const albumId = useParams().albumId;
+
     const [photos, setPhotos] = useState();
     const [click, setClick] = useState(0);
     const [currentPhoto, setcurrentPhoto] = useState();
     const [nextBtn, setNextBtn] = useState("inline");
     const [prevBtn, setPrevBtn] = useState("none");
     const url = "http://localhost:3002";
-console.log(albumId);
+
     const fetchArr = (offset, limit) => {
         fetch(`${url}/photos?albumId=${albumId}&_start=${offset}&_limit=${limit}`, {
             method: 'GET'
@@ -79,15 +75,12 @@ console.log(albumId);
 
     return (
         <>
-        
-            <h3>album id  {albumId} :photos</h3>
+            <h3>album id {albumId} : photos</h3>
             <AddPhoto albumId={albumId} photos={photos} setPhotos={setPhotos} /><br />
             <div>
-               
                 {currentPhoto && < Photo setClick={setClick} setcurrentPhoto={setcurrentPhoto} click={click} key={currentPhoto.id} photos={photos} setPhotos={setPhotos} photo={currentPhoto} />}
                 <button style={{ display: prevBtn }} onClick={() => prev()}>prev</button>
                 <button style={{ display: nextBtn }} onClick={() => next()}>next</button>
-              
             </div>
         </>
     );
