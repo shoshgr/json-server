@@ -26,7 +26,7 @@ const Todo = (props) => {
     }
 
     const update = (event) => {
-        event.preventDefault()
+        event.preventDefault();
         let todo = {
             userId: cur_todo.userId,
             id: cur_todo.id,
@@ -70,7 +70,7 @@ const Todo = (props) => {
                         <input type="text" id="title" />
                         <label  > change status: </label>
                         <br />
-                        <input type="checkbox" />
+                        <input type="checkbox" id="completed" />
                         <button type="submit" >update</button>
                     </form>)
                 }}>update</button>

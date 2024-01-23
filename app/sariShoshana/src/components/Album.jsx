@@ -82,7 +82,7 @@ const Album = (props) => {
                 <div>{form}</div>
             </div>
 
-            <Link to={{ pathname:`./${cur_album.id}/photos`, state: { "albumTitle": cur_album.title } }}>Go to Photos</Link>
+            <Link to={{ pathname:`./${cur_album.id}/photos`, state: { albumTitle: cur_album.title } }}>Go to Photos</Link>
             {/* <a href={`albums/${cur_album.id}/photos`} >see photos</a> */}
         </div>
     )

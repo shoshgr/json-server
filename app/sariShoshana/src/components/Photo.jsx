@@ -27,7 +27,7 @@ const Photo = (props) => {
     }
 
     const update = (event) => {
-        event.preventDefault()
+        event.preventDefault();
 
         let photo = {
             albumId: cur_photo.albumId,
