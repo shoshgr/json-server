@@ -56,9 +56,6 @@ const Albums = () => {
         }
         else {
             alert(`album with ${showSearchForm.type}: ${input_value} does not exist`);
-            setShowSearchForm({ status: 0, type: "" });
-            document.getElementById('search_selection').value = "none";
-            setAlbumsScreen()
         }
         event.target.querySelector('#search').value = '';
         setSearchArr([]);

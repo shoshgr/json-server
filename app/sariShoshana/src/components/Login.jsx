@@ -40,7 +40,7 @@ function Login() {
                 <input type='text' id='name' required />
                 <br />
                 <label htmlFor="password">password: </label>
-                <input type='text' id='password' required />
+                <input type='password' id='password' required />
                 <br />
                 <button type="submit">login</button>
             </form>

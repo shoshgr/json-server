@@ -47,10 +47,10 @@ const Register = () => {
                 <input type='text' id='name' required />
                 <br />
                 <label htmlFor="password">password: </label>
-                <input type='text' id='password' required />
+                <input type='password' id='password' required />
                 <br />
                 <label htmlFor="verify_password">verify password: </label>
-                <input type='text' id='verify_password' required />
+                <input type='password' id='verify_password' required />
                 <br />
                 <h3>{message}</h3>
                 <button type="submit"> register</button>

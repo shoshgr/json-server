@@ -55,10 +55,6 @@ const Posts = () => {
         }
         else {
             alert(`post with ${showSearchForm.type}: ${input_value} does not exist`);
-            navigate("")
-            setPostsScreen()
-            setShowSearchForm({ status: 0, type: "" });
-            document.getElementById('search_selection').value = "none";
         }
         event.target.querySelector('#search').value = "";
         setSearch([]);

@@ -59,10 +59,6 @@ const Todos = () => {
         }
         else {
             alert(`todo with ${showSearchForm.type}: ${input_value} does not exist`);
-            navigate("")
-            setTodosScreen()
-            document.getElementById('search_selection').value = "none";
-            setShowSearchForm({ status: 0, type: "none" })
         }
         event.target.querySelector('#search').value = "";
         setSearch([]);
@@ -91,24 +87,19 @@ const Todos = () => {
         switch (value) {
             case "id":
                 setTodosArr(todos.sort((a, b) => a.id - b.id));
-                setTodosScreen();
                 break;
             case "a-z":
                 setTodosArr(todos.sort((a, b) => (a.title > b.title) ? 1 : -1));
-                setTodosScreen();
-                console.log(todos);
                 break;
             case "z-a":
                 setTodosArr(todos.sort((a, b) => (a.title < b.title) ? 1 : -1));
-                setTodosScreen();
-                console.log(todos);
                 break;
             case "completed":
                 setTodosArr(todos.sort((a, b) => (b.completed - a.completed)));
-                setTodosScreen();
                 break;
             default:
         }
+        setTodosScreen();
     };
 
     const sortOptions = ["none", "id", "a-z", "z-a", "completed"]
